@@ -3,909 +3,458 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#bcdaf8">
-<title>羽羽英文村</title>
+<meta name="theme-color" content="#ffe6ef">
+<title>柔柔的英文小天地</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800;900&family=Huninn&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@500;600;700&family=Huninn&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#22366b; --plum:#3a5199;
-  --card:#f8fcff; --card2:#dcebfb; --txt:#22366b; --sub:#5d76a6; --line:#2f4a8a;
-  --coral:#ff9fae; --rose:#e8677f; --ribbon:#e0566f; --sky:#8ec2f5; --gold:#ffd3dc; --good:#3fbf85; --bad:#ef6f6c;
-  --bg1:#eaf5ff; --bg2:#bcdaf8; --bg3:#84b2ec; --glow:#ffffff; --shadow:rgba(47,74,138,.25); --cloudA:1;
+  --cream:#fbf6f1; --card:#ffffff;
+  --ink:#5b4e66; --head:#463b52; --sub:#a99cb0;
+  --rose:#ff9ebd; --rose-deep:#ff7ba6; --rose-soft:#ffe0ec;
+  --aqua:#7fd3d9; --aqua-soft:#daf3f3;
+  --butter:#ffe29a; --mint:#a9e2c1; --lav:#d9c9f1;
+  --line:#efe4ec;
+  --sh-pink:rgba(255,150,185,.22); --sh-soft:rgba(126,110,140,.14);
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
 }
-@media (prefers-color-scheme: dark){
+@media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --card:#26396f; --card2:#33508f; --txt:#eaf4ff; --sub:#a9c3ea; --line:#0e1a3d;
-    --bg1:#1b2a55; --bg2:#2d4a8a; --bg3:#5a86c8; --glow:#6f9be0; --shadow:rgba(0,0,0,.4); --gold:#5a6fb0; --cloudA:.3;
+    --cream:#241f2e; --card:#2f2939;
+    --ink:#efe6f2; --head:#fff; --sub:#b3a6bd;
+    --rose:#ff9ebd; --rose-deep:#ffb0cd; --rose-soft:#42303c;
+    --aqua:#7fd3d9; --aqua-soft:#213a3c;
+    --butter:#ffe29a; --mint:#8fd6b0; --lav:#c3b0e6;
+    --line:#3b3348;
+    --sh-pink:rgba(0,0,0,.3); --sh-soft:rgba(0,0,0,.35);
   }
 }
 :root[data-theme="dark"]{
-  --card:#26396f; --card2:#33508f; --txt:#eaf4ff; --sub:#a9c3ea; --line:#0e1a3d;
-    --bg1:#1b2a55; --bg2:#2d4a8a; --bg3:#5a86c8; --glow:#6f9be0; --shadow:rgba(0,0,0,.4); --gold:#5a6fb0; --cloudA:.3;
+  --cream:#241f2e; --card:#2f2939;
+  --ink:#efe6f2; --head:#fff; --sub:#b3a6bd;
+  --rose:#ff9ebd; --rose-deep:#ffb0cd; --rose-soft:#42303c;
+  --aqua:#7fd3d9; --aqua-soft:#213a3c;
+  --butter:#ffe29a; --mint:#8fd6b0; --lav:#c3b0e6;
+  --line:#3b3348;
+  --sh-pink:rgba(0,0,0,.3); --sh-soft:rgba(0,0,0,.35);
 }
-html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px);
-  background:radial-gradient(circle at 10% 6%,var(--glow) 0,transparent 36%),radial-gradient(circle at 50% 100%,rgba(255,255,255,.8),transparent 52%),linear-gradient(170deg,var(--bg1),var(--bg2) 55%,var(--bg3)) fixed;}
 *{box-sizing:border-box}
-body{height:100%;margin:0;display:flex;flex-direction:column;overflow:hidden;color:var(--txt);
-  font-family:"Nunito","Huninn","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;font-weight:600;font-size:16px;line-height:1.5;
-  background:radial-gradient(circle at 10% 6%,var(--glow) 0,transparent 36%),radial-gradient(circle at 50% 100%,rgba(255,255,255,.8),transparent 52%),linear-gradient(170deg,var(--bg1),var(--bg2) 55%,var(--bg3)) fixed;
-  -webkit-tap-highlight-color:transparent;}
-button{font:inherit;color:inherit;cursor:pointer}
-b{font-weight:900}
-
-/* watercolor sky */
-.fallers{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-.fallers::before{content:"";position:absolute;inset:-5% -8%;opacity:var(--cloudA);filter:blur(7px);animation:clouds 46s ease-in-out infinite alternate;
-  background:radial-gradient(ellipse 42% 9% at 22% 14%,rgba(255,255,255,.95),transparent 72%),radial-gradient(ellipse 50% 11% at 80% 27%,rgba(255,255,255,.8),transparent 72%),radial-gradient(ellipse 40% 8% at 24% 52%,rgba(255,255,255,.7),transparent 72%),radial-gradient(ellipse 55% 10% at 84% 72%,rgba(255,255,255,.8),transparent 72%),radial-gradient(ellipse 35% 7% at 10% 86%,rgba(255,255,255,.7),transparent 72%)}
-@keyframes clouds{to{transform:translateX(-5%)}}
-.fall{position:absolute;bottom:-8vh;border-radius:50%;border:2px solid rgba(255,255,255,.85);background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.95),rgba(255,255,255,.12));opacity:.75;animation:rise linear infinite}
-@keyframes rise{0%{transform:translate(0,0)}50%{transform:translate(24px,-58vh)}100%{transform:translate(-18px,-118vh)}}
-.foam{position:fixed;left:0;right:0;bottom:0;width:100%;height:120px;z-index:0;pointer-events:none;opacity:var(--cloudA)}
-
-#app{position:relative;z-index:1;flex:1;min-height:0;display:flex;flex-direction:column;width:100%;max-width:560px;margin:0 auto}
-header.top{display:flex;align-items:center;gap:10px;padding:8px 14px 6px}
-.hdt{flex:1;min-width:0}
-.hdt b{display:block;font-size:17px;line-height:1.1;letter-spacing:.5px}
-.xpbar{height:10px;border:2px solid var(--line);border-radius:8px;background:var(--card);overflow:hidden;margin-top:4px}
-.xpbar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--rose));transition:width .6s}
-.pill{border:2.5px solid var(--line);background:var(--card);border-radius:14px;padding:2px 10px;font-weight:900;font-size:14px;box-shadow:0 3px 0 var(--shadow);white-space:nowrap}
-main{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:8px 14px 24px}
-nav.tabs{display:flex;gap:4px;padding:6px 8px 8px;margin:0 8px 8px;background:var(--card);border:3px solid var(--line);border-radius:22px;box-shadow:0 4px 0 var(--shadow)}
-nav.tabs button{flex:1;border:0;background:transparent;border-radius:16px;padding:5px 0 3px;font-size:11px;font-weight:900;color:var(--sub);display:flex;flex-direction:column;align-items:center;gap:0}
-nav.tabs button span{font-size:22px;line-height:1.2;transition:transform .2s}
-nav.tabs button.on{background:var(--gold);color:var(--ink)}
-nav.tabs button.on span{transform:translateY(-2px) scale(1.15)}
-body.inquiz nav.tabs{display:none}
-
-.card{background:var(--card);border:3px solid var(--line);border-radius:22px;box-shadow:0 5px 0 var(--shadow);padding:14px;margin-bottom:14px}
-.card h3,.sec{margin:0 0 8px;font-size:17px;font-weight:900}
-.sec{margin:6px 4px 8px;color:var(--ink)}
-:root[data-theme="dark"] .sec{color:var(--txt)}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .sec{color:var(--txt)}}
-.sub{color:var(--sub);font-size:14px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 16px;border:3px solid var(--line);border-radius:16px;background:var(--gold);color:#22366b;font-weight:900;box-shadow:0 4px 0 var(--line);transition:transform .08s,box-shadow .08s;user-select:none}
-.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--line)}
-.btn.pink{background:var(--rose);color:#fff}
-.btn.sky{background:var(--sky)}
-.btn.good{background:var(--good);color:#fff}
-.btn.ghost{background:var(--card2);color:var(--txt)}
-.btn.wide{width:100%}
-.btn.sm{padding:5px 12px;font-size:14px;border-radius:12px;box-shadow:0 3px 0 var(--line)}
-.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.row.between{justify-content:space-between}
-
-.seg{display:flex;gap:6px;margin:0 0 12px;flex-wrap:wrap}
-.seg button{flex:1;min-width:70px;border:3px solid var(--line);background:var(--card);border-radius:14px;padding:6px 8px;font-weight:900;font-size:14px;box-shadow:0 3px 0 var(--shadow)}
-.seg button.on{background:var(--gold);color:#22366b}
-
-/* mascot */
-.mascot{width:92px;height:92px;flex:none;animation:bob 2.6s ease-in-out infinite;transform-origin:50% 92%}
-.mascot.sm{width:46px;height:46px}
-.mascot.md{width:64px;height:64px}
-@keyframes bob{50%{transform:translateY(-5px) rotate(-2deg)}}
-.hop{animation:hop .6s !important}
-@keyframes hop{30%{transform:translateY(-24px) scale(1.06,.94)}60%{transform:translateY(0) scale(.95,1.05)}}
-.shake{animation:shake .4s}
-@keyframes shake{25%{transform:translateX(-7px)}50%{transform:translateX(7px)}75%{transform:translateX(-4px)}}
-.hero{display:flex;gap:12px;align-items:center;background:linear-gradient(135deg,var(--card),var(--card2))}
-.hero h1{margin:0;font-size:26px;line-height:1.15;font-weight:900}
-.bubble{position:relative;background:var(--card);border:3px solid var(--line);border-radius:16px;padding:6px 12px;font-size:14px;font-weight:800}
-.hero .bubble{margin-top:8px;background:#fff;color:#22366b}
-
-/* quests / bars */
-.qrow{display:flex;align-items:center;gap:10px;padding:6px 0}
-.qrow .ic{font-size:24px;width:34px;text-align:center}
-.qrow .tt{flex:1;font-size:15px}
-.bar{height:12px;border:2.5px solid var(--line);border-radius:9px;background:var(--card2);overflow:hidden;margin-top:3px}
-.bar i{display:block;height:100%;background:var(--good);transition:width .5s}
-.done{color:var(--good);font-weight:900}
-
-.ucard{display:flex;gap:12px;align-items:center;width:100%;text-align:left;background:var(--card);border:3px solid var(--line);border-radius:22px;box-shadow:0 5px 0 var(--shadow);padding:12px 14px;margin-bottom:14px}
-.ucard:active{transform:translateY(3px);box-shadow:0 2px 0 var(--shadow)}
-.ucard .emo{font-size:40px;width:64px;height:64px;border-radius:18px;border:3px solid var(--line);display:grid;place-items:center;flex:none}
-.u8 .emo{background:linear-gradient(135deg,#d6ebff,#7fb8f0)}
-.u9 .emo{background:linear-gradient(135deg,#ffe0e6,#f28ba0)}
-.ucard b{font-size:18px;display:block;line-height:1.2}
-.ucard .grow{flex:1;min-width:0}
-
-/* flashcards */
-.fcwrap{perspective:1000px;margin-bottom:12px}
-.flip{position:relative;height:400px;transition:transform .55s cubic-bezier(.3,1.3,.5,1);transform-style:preserve-3d}
-.flip.on{transform:rotateY(180deg)}
-.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--card);border:3px solid var(--line);border-radius:26px;box-shadow:0 6px 0 var(--shadow);padding:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;overflow:auto}
-.face.back{transform:rotateY(180deg);background:linear-gradient(160deg,var(--card),var(--card2))}
-.bigword{font-size:38px;font-weight:900;line-height:1.1;word-break:break-word}
-.pos{display:inline-block;background:var(--sky);color:#22366b;border:2px solid var(--line);border-radius:10px;padding:0 8px;font-size:13px;font-weight:900}
-.zhbig{font-size:26px;font-weight:900;line-height:1.3}
-.tip{background:var(--card2);border:2px dashed var(--line);border-radius:14px;padding:6px 10px;font-size:14px;text-align:left}
-.exbox{font-size:15px;text-align:left;width:100%}
-.exbox b{color:var(--ribbon)}
-.exbox .z{color:var(--sub);font-size:14px}
-.fcnav{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;font-weight:900}
-.wl{display:flex;align-items:center;gap:10px;padding:9px 4px;border-bottom:2px dashed rgba(125,100,120,.35);cursor:pointer}
-.wl:last-child{border:0}
-.wl .en{font-weight:900;font-size:18px}
-.wl .zh{display:none;color:var(--sub);font-size:14px}
-.wl.open .zh{display:block}
-.wl .grow{flex:1;min-width:0}
-.spk{width:40px;height:40px;border-radius:50%;border:3px solid var(--line);background:var(--sky);font-size:18px;display:grid;place-items:center;box-shadow:0 3px 0 var(--line);flex:none;padding:0}
-.spk:active{transform:translateY(2px);box-shadow:0 1px 0 var(--line)}
-.spk.slow{background:var(--gold)}
-
-/* reading */
-.para{position:relative;font-size:18px;line-height:1.85;margin-bottom:6px}
-.tok{cursor:pointer;border-radius:6px;padding:0 2px;font-weight:800;transition:background .15s}
-.tok.wd{border-bottom:3px dotted var(--ribbon);background:rgba(232,103,127,.14)}
-.tok.ph{border-bottom:3px solid var(--sky);background:rgba(127,184,240,.32)}
-.tok:active{background:var(--gold)}
-.zhp{display:none;margin-top:6px;padding:8px 10px;border-radius:12px;background:var(--card2);font-size:15px;line-height:1.7}
-.zhp.show{display:block}
-.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--sub);margin-bottom:10px}
-
-/* sheet & modal */
-#backdrop{position:fixed;inset:0;background:rgba(30,15,40,.45);opacity:0;pointer-events:none;transition:opacity .25s;z-index:20}
-#backdrop.open{opacity:1;pointer-events:auto}
-#sheet{position:fixed;left:0;right:0;bottom:0;z-index:21;max-width:560px;margin:0 auto;background:var(--card);border:3px solid var(--line);border-bottom:0;border-radius:26px 26px 0 0;padding:14px 16px calc(18px + env(safe-area-inset-bottom,0px));max-height:78%;overflow:auto;transform:translateY(105%);transition:transform .32s cubic-bezier(.3,1.2,.5,1)}
-#sheet.open{transform:translateY(0)}
-.handle{width:44px;height:6px;border-radius:4px;background:var(--line);opacity:.3;margin:0 auto 10px}
-.sh-en{font-size:28px;font-weight:900;line-height:1.15}
-.sh-zh{font-size:20px;font-weight:900;margin:8px 0}
-#modal{position:fixed;inset:0;z-index:40;display:none;align-items:center;justify-content:center;background:rgba(30,15,40,.55);padding:20px}
-#modal.open{display:flex}
-#modal .box{background:var(--card);border:3px solid var(--line);border-radius:26px;box-shadow:0 8px 0 var(--shadow);padding:22px;max-width:360px;width:100%;text-align:center;animation:pop .45s}
-#modal .big{font-size:56px;line-height:1.1}
-#toasts{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));left:0;right:0;z-index:50;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none}
-.toast{background:var(--ink);color:#fff6ea;border:2px solid #fff6ea33;border-radius:16px;padding:8px 16px;font-weight:900;font-size:15px;box-shadow:0 4px 12px rgba(0,0,0,.3);animation:toastin .35s cubic-bezier(.3,1.5,.5,1)}
-.toast.out{opacity:0;transform:translateY(-14px);transition:.35s}
-@keyframes toastin{from{transform:translateY(-30px) scale(.8);opacity:0}}
-#fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60}
-
-/* modes */
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.mode{background:var(--card);border:3px solid var(--line);border-radius:20px;box-shadow:0 5px 0 var(--shadow);padding:12px 10px;text-align:center}
-.mode:active{transform:translateY(3px);box-shadow:0 2px 0 var(--shadow)}
-.mode .mi{font-size:34px;line-height:1.2}
-.mode b{display:block;font-size:16px}
-.mode .d{font-size:12.5px;color:var(--sub);line-height:1.3;min-height:32px}
-.stars{font-size:18px;letter-spacing:2px;color:#e0a72e}
-.stars .off{color:#bda9b6;opacity:.55}
-
-/* quiz */
-.qtop{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.qtop .x{width:38px;height:38px;border-radius:50%;border:3px solid var(--line);background:var(--card);font-weight:900;box-shadow:0 3px 0 var(--shadow)}
-.pbar{flex:1;height:16px;border:3px solid var(--line);border-radius:10px;background:var(--card);overflow:hidden}
-.pbar i{display:block;height:100%;background:linear-gradient(90deg,var(--sky),var(--good));transition:width .4s}
-.combo{font-weight:900;min-width:52px;text-align:right;opacity:.55}
-.combo.hot{opacity:1;color:var(--ribbon);animation:pop .4s}
-.qcard{text-align:center}
-.qtitle{font-size:15px;color:var(--sub);font-weight:800;margin-bottom:8px}
-.qsent{font-size:22px;line-height:1.55;font-weight:800}
-.blank{display:inline-block;min-width:90px;border-bottom:4px solid var(--ribbon);color:var(--ribbon);font-weight:900;padding:0 6px}
-.blank.fill{border-color:var(--good);color:var(--good)}
-.opts{display:grid;gap:10px}
-.opt{width:100%;text-align:left;padding:13px 16px;font-size:18px;font-weight:900;background:var(--card);border:3px solid var(--line);border-radius:18px;box-shadow:0 4px 0 var(--line);color:var(--txt);transition:transform .08s,box-shadow .08s}
-.opt:active:not(:disabled){transform:translateY(3px);box-shadow:0 1px 0 var(--line)}
-.opt.ok{background:var(--good);color:#fff;animation:pop .4s}
-.opt.no{background:var(--bad);color:#fff;animation:shake .4s}
-.opt.dim{opacity:.5}
-.bigspk{width:96px;height:96px;font-size:44px;margin:6px auto}
-.fb{margin-top:14px;display:none;align-items:center;gap:10px;border:3px solid var(--line);border-radius:20px;padding:10px 12px;background:var(--card);box-shadow:0 4px 0 var(--shadow);animation:slide .3s}
-.fb.show{display:flex}
-.fb.good{background:#d9f5e6;color:#20402f}
-.fb.bad{background:#ffe0dc;color:#5a2626}
-@keyframes slide{from{transform:translateY(20px);opacity:0}}
-.fb .msg{flex:1;font-size:15px;line-height:1.45}
-.zhq{font-size:21px;font-weight:900;margin:6px 0 12px;line-height:1.5}
-.ans{min-height:66px;border:3px dashed var(--line);border-radius:16px;padding:8px;display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;background:var(--card2);margin-bottom:12px}
-.ans .ph{color:var(--sub);font-size:14px;align-self:center;margin:0 auto}
-.bank{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:14px;min-height:50px}
-.chip{border:3px solid var(--line);background:var(--card);color:var(--txt);border-radius:14px;padding:6px 12px;font-size:17px;font-weight:900;box-shadow:0 3px 0 var(--line)}
-.chip.on{background:var(--gold);color:#22366b}
-.chip:active{transform:translateY(2px);box-shadow:0 1px 0 var(--line)}
-
-/* result */
-.rstars{display:flex;justify-content:center;gap:6px;margin:8px 0}
-.star{font-size:60px;transform:scale(0);animation:pop .55s forwards;filter:drop-shadow(0 3px 0 rgba(45,34,56,.3))}
-.star.off{filter:grayscale(1) opacity(.35)}
-@keyframes pop{0%{transform:scale(0)}60%{transform:scale(1.3) rotate(8deg)}100%{transform:scale(1)}}
-.big{font-size:44px;font-weight:900;line-height:1.1}
-.stat{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center}
-.stat div{background:var(--card2);border-radius:14px;padding:8px 2px;border:2px solid var(--line)}
-.stat b{display:block;font-size:20px}
-.stat span{font-size:12px;color:var(--sub)}
-
-/* badges */
-.badges{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.badge{display:flex;gap:8px;align-items:center;padding:8px;border:3px solid var(--line);border-radius:16px;background:var(--card2)}
-.badge .bi{font-size:30px;width:40px;text-align:center}
-.badge.lock{opacity:.6}
-.badge.lock .bi{filter:grayscale(1)}
-.badge b{font-size:14px;line-height:1.2;display:block}
-.badge small{font-size:11.5px;color:var(--sub);line-height:1.2;display:block}
-.fgrid{display:flex;flex-wrap:wrap;gap:6px}
-.fchip{border:2px solid var(--line);border-radius:12px;background:var(--card2);padding:2px 8px;font-size:13px;font-weight:800}
-.fchip.lock{filter:grayscale(1);opacity:.45}
-.lvl{font-size:22px;font-weight:900}
-
-@media (prefers-reduced-motion: reduce){
-  .fall,.mascot{animation:none}
-  .flip{transition:none}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+html,body{
+  background:
+    radial-gradient(1100px 560px at 18% -8%, #fff1e6 0, transparent 58%),
+    radial-gradient(900px 620px at 104% -2%, #e6f6f3 0, transparent 52%),
+    radial-gradient(1000px 820px at 50% 116%, #ffe7f0 0, transparent 60%),
+    linear-gradient(#fbf7f2,#f5f0ee) fixed;
 }
+@media (prefers-color-scheme:dark){
+  html:not([data-theme="light"]),body:not([data-theme="light"]){
+    background:
+      radial-gradient(1000px 560px at 18% -8%, #3a2c3d 0, transparent 58%),
+      radial-gradient(900px 620px at 104% -2%, #1f3a3c 0, transparent 52%),
+      radial-gradient(1000px 820px at 50% 116%, #3a2740 0, transparent 60%),
+      linear-gradient(#241f2e,#1e1a27) fixed;
+  }
+}
+body{min-height:100%;margin:0;color:var(--ink);
+  font-family:"Quicksand","Huninn","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  font-weight:600;font-size:16px;line-height:1.6;-webkit-tap-highlight-color:transparent;
+  overflow-x:hidden}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+.en{font-family:"Baloo 2","Quicksand",sans-serif}
+
+/* floating background */
+.sky{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.b{position:absolute;bottom:-14vh;border-radius:50%;opacity:.5;
+  background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.95),rgba(255,255,255,.3) 40%,rgba(180,235,238,.16) 68%,transparent 74%);
+  animation:floaty linear infinite}
+@keyframes floaty{0%{transform:translate(0,0) scale(.7);opacity:0}14%{opacity:.5}55%{transform:translate(20px,-55vh) scale(1)}100%{transform:translate(-12px,-118vh) scale(.85);opacity:0}}
+
+/* shell */
+#app{position:relative;z-index:1;width:100%;max-width:440px;margin:0 auto;padding:0 18px 40px;
+  min-height:100dvh;display:flex;flex-direction:column}
+.top{display:flex;align-items:center;gap:10px;padding:14px 4px 8px}
+.brand{flex:1;min-width:0;display:flex;align-items:center;gap:9px}
+.brand .mini{width:38px;height:38px;flex:none}
+.brand b{font-size:17px;color:var(--head);font-weight:700;font-family:"Huninn","Quicksand",sans-serif;letter-spacing:.3px}
+.hearts{display:flex;align-items:center;gap:5px;background:var(--card);border-radius:999px;
+  padding:5px 13px;font-weight:700;color:var(--rose-deep);box-shadow:0 6px 16px var(--sh-pink)}
+.hearts b{font-family:"Baloo 2",sans-serif}
+main{flex:1;min-height:0}
+
+/* soft cards */
+.panel{background:var(--card);border-radius:28px;padding:20px;
+  box-shadow:0 16px 34px var(--sh-soft);margin-bottom:16px}
+.soft-sub{color:var(--sub);font-size:14.5px}
+
+/* home hero */
+.hero{position:relative;border-radius:32px;overflow:hidden;margin-bottom:18px;
+  padding:26px 22px 24px;text-align:center;
+  background:
+    radial-gradient(120px 120px at 82% 22%, rgba(255,255,255,.6), transparent 70%),
+    linear-gradient(160deg,#eafbfa 0%, #dff4f6 42%, #ffe6f0 100%);
+  box-shadow:0 18px 40px var(--sh-pink)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hero{background:linear-gradient(160deg,#25414a,#33344f 55%,#3f2c3f)}}
+:root[data-theme="dark"] .hero{background:linear-gradient(160deg,#25414a,#33344f 55%,#3f2c3f)}
+.hero .sun{position:absolute;top:16px;right:20px;width:44px;height:44px;border-radius:50%;
+  background:radial-gradient(circle at 40% 38%,#fff4c9,#ffe08a);box-shadow:0 0 26px rgba(255,220,130,.6)}
+.hero .ring{position:absolute;left:-26px;bottom:-30px;width:120px;height:120px;border-radius:50%;
+  border:22px solid rgba(255,158,190,.55);filter:blur(.3px)}
+.hero .mascot{width:118px;height:118px;margin:2px auto 6px;position:relative;z-index:2}
+.hero h1{margin:2px 0 2px;font-size:23px;color:var(--head);font-family:"Huninn",sans-serif;font-weight:400;letter-spacing:.5px}
+.hero p{margin:0;color:#7a6f86;font-size:15px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hero p{color:#e7dcec}}
+:root[data-theme="dark"] .hero p{color:#e7dcec}
+
+.mascot{display:block}
+.mascot.bob{animation:bob 3.2s ease-in-out infinite;transform-origin:50% 92%}
+@keyframes bob{50%{transform:translateY(-6px) rotate(-2deg)}}
+.wig{animation:wig .6s ease}
+@keyframes wig{20%{transform:translateY(-14px) rotate(-6deg) scale(1.04)}55%{transform:translateY(0) rotate(5deg) scale(.98)}80%{transform:rotate(-2deg)}}
+@media (prefers-reduced-motion:reduce){.mascot.bob,.b{animation:none}.b{display:none}}
+
+/* big home buttons */
+.big{display:flex;align-items:center;gap:15px;width:100%;text-align:left;
+  background:var(--card);border-radius:26px;padding:16px 18px;margin-bottom:14px;
+  box-shadow:0 14px 30px var(--sh-soft);transition:transform .12s,box-shadow .12s}
+.big:active{transform:translateY(3px) scale(.995);box-shadow:0 7px 16px var(--sh-soft)}
+.big .ic{width:60px;height:60px;border-radius:20px;flex:none;display:grid;place-items:center;font-size:30px}
+.big.cards .ic{background:linear-gradient(150deg,#ffe6ef,#ffcbe0)}
+.big.play .ic{background:linear-gradient(150deg,#dbf5f4,#c2ecec)}
+.big .grow{flex:1;min-width:0}
+.big .grow b{display:block;font-size:18px;color:var(--head);font-weight:700;font-family:"Huninn",sans-serif}
+.big .grow span{font-size:13.5px;color:var(--sub)}
+.big .go{font-size:22px;color:var(--rose)}
+
+/* generic soft button */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  padding:12px 20px;border-radius:20px;font-weight:700;font-family:"Huninn","Quicksand",sans-serif;
+  background:var(--card);color:var(--ink);box-shadow:0 10px 22px var(--sh-soft);transition:transform .1s,box-shadow .1s}
+.btn:active{transform:translateY(3px);box-shadow:0 4px 10px var(--sh-soft)}
+.btn.rose{background:linear-gradient(150deg,#ffb0cd,#ff89b2);color:#fff;box-shadow:0 12px 24px var(--sh-pink)}
+.btn.aqua{background:linear-gradient(150deg,#a7e6e8,#84d5d9);color:#3a5a5c}
+.btn.ghost{background:var(--card);color:var(--sub)}
+.btn.wide{width:100%}
+.btn.sm{padding:8px 15px;font-size:14px;border-radius:15px}
+.back{display:inline-flex;align-items:center;gap:5px;color:var(--sub);font-weight:700;
+  padding:6px 4px;margin:2px 0 4px}
+.rowtop{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}
+
+/* unit chips */
+.chips{display:flex;gap:8px;margin:2px 0 16px}
+.chip{flex:1;padding:9px 6px;border-radius:16px;text-align:center;font-weight:700;
+  font-family:"Huninn",sans-serif;color:var(--sub);background:var(--card);box-shadow:0 8px 18px var(--sh-soft);transition:transform .1s}
+.chip:active{transform:translateY(2px)}
+.chip.on{background:linear-gradient(150deg,#ffb0cd,#ff8fb4);color:#fff;box-shadow:0 10px 20px var(--sh-pink)}
+
+/* flashcard */
+.deck{perspective:1200px;margin-bottom:16px}
+.flip{position:relative;height:340px;transition:transform .6s cubic-bezier(.3,1.25,.5,1);transform-style:preserve-3d;cursor:pointer}
+.flip.on{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  border-radius:30px;background:var(--card);box-shadow:0 20px 40px var(--sh-pink);
+  padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:12px;overflow:auto}
+.face.back{transform:rotateY(180deg);background:linear-gradient(160deg,#fffdfa,#fff2f7)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .face.back{background:linear-gradient(160deg,#332b3d,#3a2c37)}}
+:root[data-theme="dark"] .face.back{background:linear-gradient(160deg,#332b3d,#3a2c37)}
+.pos{display:inline-block;background:var(--aqua-soft);color:#4a8f92;border-radius:11px;padding:2px 12px;font-size:13px;font-weight:700}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pos{color:#a7e6e8}}
+:root[data-theme="dark"] .pos{color:#a7e6e8}
+.word{font-size:42px;font-weight:700;color:var(--head);line-height:1.1;word-break:break-word}
+.zh{font-size:27px;font-weight:700;color:var(--head);font-family:"Huninn",sans-serif;line-height:1.4}
+.ex{font-size:15.5px;color:var(--ink);line-height:1.7}
+.ex b{color:var(--rose-deep);font-weight:700}
+.ex .z{color:var(--sub);font-size:14px;margin-top:2px}
+.hint{color:var(--sub);font-size:13.5px}
+.spk{width:46px;height:46px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:20px;
+  background:linear-gradient(150deg,#a7e6e8,#84d5d9);color:#37595b;box-shadow:0 8px 18px rgba(120,205,208,.4);transition:transform .1s}
+.spk:active{transform:translateY(2px) scale(.94)}
+.spk.slow{background:linear-gradient(150deg,#ffe6a6,#ffd778);color:#7a5f21}
+.spk.mini{width:34px;height:34px;font-size:15px}
+.spkrow{display:flex;gap:10px;justify-content:center}
+.deknav{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;color:var(--sub);font-weight:700}
+.deknav .n{font-family:"Baloo 2",sans-serif;font-size:15px;color:var(--head)}
+
+/* practice */
+.pbar{height:12px;border-radius:999px;background:var(--rose-soft);overflow:hidden;margin:4px 0 0}
+.pbar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#ffd36b,#ff9ebd);transition:width .5s}
+.qask{color:var(--sub);font-size:15px;font-family:"Huninn",sans-serif;margin-bottom:4px}
+.qword{font-size:38px;font-weight:700;color:var(--head);line-height:1.15;word-break:break-word}
+.opts{display:flex;flex-direction:column;gap:12px;margin-top:4px}
+.opt{width:100%;text-align:left;padding:15px 18px;border-radius:20px;font-size:17px;font-weight:700;
+  font-family:"Huninn",sans-serif;color:var(--head);background:var(--card);
+  box-shadow:0 12px 24px var(--sh-soft);transition:transform .1s,box-shadow .1s}
+.opt:active:not(:disabled){transform:translateY(3px);box-shadow:0 5px 12px var(--sh-soft)}
+.opt.ok{background:linear-gradient(150deg,#bdeacf,#9adeb6);color:#2f6a49}
+.opt.no{background:linear-gradient(150deg,#ffc7d0,#ffabba);color:#8a3546}
+.opt.dim{opacity:.45}
+.cheer{display:flex;align-items:center;gap:12px;margin-top:16px;padding:14px 16px;border-radius:22px;
+  background:var(--card);box-shadow:0 12px 26px var(--sh-soft);animation:rise .35s ease}
+.cheer .mascot{width:52px;height:52px;flex:none}
+.cheer .msg{flex:1;font-size:15px;font-family:"Huninn",sans-serif;color:var(--head);line-height:1.5}
+@keyframes rise{from{transform:translateY(14px);opacity:0}}
+
+/* done */
+.done{text-align:center;padding:30px 22px}
+.done .mascot{width:120px;height:120px;margin:0 auto 8px}
+.done h2{margin:6px 0 2px;font-family:"Huninn",sans-serif;color:var(--head);font-size:24px;font-weight:400}
+.done p{margin:0 0 16px;color:var(--sub)}
+.done .count{font-family:"Baloo 2",sans-serif;font-size:40px;color:var(--rose-deep);line-height:1}
+
+/* floating hearts + toast */
+#hearts{position:fixed;inset:0;pointer-events:none;z-index:70;overflow:hidden}
+.fh{position:absolute;font-size:24px;animation:fh 1.5s ease-out forwards}
+@keyframes fh{0%{transform:translateY(0) scale(.6);opacity:0}20%{opacity:1}100%{transform:translateY(-120px) scale(1.1) rotate(12deg);opacity:0}}
+#toast{position:fixed;left:0;right:0;top:calc(14px + env(safe-area-inset-top,0px));z-index:80;
+  display:flex;justify-content:center;pointer-events:none}
+.toast{background:#fff;color:var(--head);font-family:"Huninn",sans-serif;font-weight:700;
+  border-radius:16px;padding:9px 18px;box-shadow:0 12px 28px var(--sh-pink);animation:tin .35s cubic-bezier(.3,1.5,.5,1)}
+@keyframes tin{from{transform:translateY(-24px) scale(.9);opacity:0}}
+.toast.out{opacity:0;transform:translateY(-14px);transition:.35s}
+
+.footer{text-align:center;color:var(--sub);font-size:12.5px;margin-top:8px}
+.footer button{color:var(--sub);text-decoration:underline;font-size:12.5px}
 </style>
 </head>
 <body>
-
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <symbol id="crow" viewBox="0 0 120 120">
-      <ellipse cx="60" cy="113" rx="30" ry="4.5" fill="#5f8fe0" opacity=".22"/>
-      <path d="M48 104 l-3 9 M48 104 l3 9 M72 104 l-3 9 M72 104 l3 9" stroke="#ff9fae" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-      <path d="M60 22 C90 22 104 46 102 70 C100 94 84 106 60 106 C36 106 20 94 18 70 C16 46 30 22 60 22Z" fill="#fbfdff" stroke="#9cc3ee" stroke-width="2.5"/>
-      <ellipse cx="60" cy="90" rx="25" ry="15" fill="#e3f0ff"/>
-      <path d="M19 66 C5 74 5 95 19 101 C26 93 26 80 28 72Z" fill="#cfe4fa" stroke="#9cc3ee" stroke-width="2"/>
-      <path d="M101 66 C115 74 115 95 101 101 C94 93 94 80 92 72Z" fill="#cfe4fa" stroke="#9cc3ee" stroke-width="2"/>
-      <path d="M17 64 C14 34 34 16 60 16 C86 16 106 34 103 64 C96 46 80 40 60 40 C40 40 24 46 17 64Z" fill="#232c56"/>
-      <path d="M44 40 C46 50 40 54 36 56 C42 52 46 48 44 40Z M76 40 C74 50 80 54 84 56 C78 52 74 48 76 40Z" fill="#232c56"/>
-      <ellipse cx="44" cy="68" rx="8.5" ry="10.5" fill="#26356e"/>
-      <ellipse cx="76" cy="68" rx="8.5" ry="10.5" fill="#26356e"/>
-      <circle cx="47" cy="63.5" r="3.4" fill="#fff"/>
-      <circle cx="79" cy="63.5" r="3.4" fill="#fff"/>
-      <circle cx="42" cy="72" r="1.6" fill="#fff" opacity=".8"/>
-      <circle cx="74" cy="72" r="1.6" fill="#fff" opacity=".8"/>
-      <ellipse cx="29" cy="82" rx="6.5" ry="3.8" fill="#ffa3b5" opacity=".7"/>
-      <ellipse cx="91" cy="82" rx="6.5" ry="3.8" fill="#ffa3b5" opacity=".7"/>
-      <path d="M53 78 Q60 75.5 67 78 Q64 88 60 90 Q56 88 53 78Z" fill="#ff9fae" stroke="#f07a91" stroke-width="1.5" stroke-linejoin="round"/>
-      <path d="M22 52 L6 44 Q4 57 17 61Z" fill="#7fb8f0"/>
-      <path d="M22 52 L36 42 Q40 55 28 61Z" fill="#7fb8f0"/>
-      <circle cx="22" cy="52" r="5" fill="#a9d0f8"/>
-      <path d="M98 52 L114 44 Q116 57 103 61Z" fill="#e8677f"/>
-      <path d="M98 52 L84 42 Q80 55 92 61Z" fill="#e8677f"/>
-      <circle cx="98" cy="52" r="5" fill="#f28ba0"/>
-    </symbol>
-    <symbol id="feather" viewBox="0 0 40 100">
-      <path d="M20 2 C35 24 37 62 20 98 C3 62 5 24 20 2Z" fill="currentColor"/>
-      <path d="M20 12 L20 96" stroke="#fff" stroke-opacity=".3" stroke-width="1.6"/>
-    </symbol>
-  </defs>
-</svg>
-
-<div class="fallers" id="fallers"></div>
-<svg class="foam" viewBox="0 0 800 120" preserveAspectRatio="none" aria-hidden="true">
-  <path d="M0 92 C70 68 120 76 190 92 S320 112 400 90 S540 68 620 92 S740 106 800 88 L800 120 L0 120Z" fill="#cfe4ff" opacity=".8"/>
-  <path d="M0 74 C60 44 100 44 160 70 S262 100 322 70 S422 38 482 68 S582 102 642 70 S742 42 800 66 L800 120 L0 120Z" fill="#ffffff" opacity=".9"/>
-</svg>
-
+<div class="sky" id="sky"></div>
 <div id="app">
-  <header class="top" id="hd"></header>
+  <div class="top">
+    <div class="brand" data-a="home">
+      <span class="mini" id="mini"></span><b>柔柔的英文小天地</b>
+    </div>
+    <div class="hearts">💗 <b id="hc">0</b></div>
+  </div>
   <main id="main"></main>
-  <nav class="tabs" id="tabs">
-    <button data-a="nav" data-v="home"><span>🏠</span>首頁</button>
-    <button data-a="nav" data-v="vocab"><span>🃏</span>單字</button>
-    <button data-a="nav" data-v="read"><span>📖</span>課文</button>
-    <button data-a="nav" data-v="challenge"><span>🎮</span>挑戰</button>
-    <button data-a="nav" data-v="ach"><span>🏆</span>成就</button>
-  </nav>
+  <div class="footer" id="foot"></div>
 </div>
-
-<div id="backdrop" data-a="closesheet"></div>
-<div id="sheet"></div>
-<div id="modal"></div>
-<div id="toasts"></div>
-<canvas id="fx"></canvas>
+<div id="hearts"></div>
+<div id="toast"></div>
 
 <script>
-/* ============ 資料 ============ */
-const WORDS=[];
-const W=(u,en,pos,zh,tip,ex,exzh,ref)=>WORDS.push({id:en,u,en,pos,zh,tip,ex,exzh,ref:!!ref});
-/* Unit 8 */
-W(8,'coincidence','n.','巧合；碰巧的事','co-（一起）＋ incid（落下）→ 剛好一起落在同一點','It was a happy {coincidence} that we chose the same cafe.','我們挑了同一家咖啡店，真是個愉快的巧合。');
-W(8,'invade','v.','入侵、侵略；侵犯','in-（進入）＋ vade（走）→ 走進別人的地盤','The army planned to {invade} the island at dawn.','軍隊計畫在黎明入侵這座島。');
-W(8,'overthrow','v.','（尤指以武力）推翻、打倒','over（翻過去）＋ throw（丟）→ 把統治者翻倒。三態：overthrow–overthrew–overthrown','The rebels hoped to {overthrow} the cruel king.','反抗軍希望推翻殘暴的國王。');
-W(8,'rigid','adj.','僵化的、不易改變的；死板的','想像一根硬梆梆、完全不會彎的尺','Her {rigid} schedule leaves no room for surprises.','她死板的行程表容不下任何驚喜。');
-W(8,'labor','v.','勞動；辛苦工作（laboring 作形容詞：勞動的）','名詞 labor 是「勞動、勞工」，Labor Day 就是勞動節','Farmers {labor} in the fields from sunrise to sunset.','農夫從日出到日落都在田裡辛勤工作。');
-W(8,'peasant','n.','（尤指舊時的）農民、佃農','集合名詞是 peasantry（農民階級）','A poor {peasant} gave part of his crops to the lord.','一位窮苦的農民把部分收成交給領主。');
-W(8,'noble','n.','貴族；品德高尚的人','aristocracy 是「貴族階級、貴族統治階層」','The {noble} lived in a castle and owned a lot of land.','那位貴族住在城堡裡，擁有大片土地。');
-W(8,'encounter','v.','（偶然）遇到；遭遇','en-（在…裡）＋ counter（相對）→ 迎面撞見','You might {encounter} a deer on this quiet trail.','你可能會在這條安靜的小徑上遇到一隻鹿。');
-W(8,'feast','n.','盛宴、宴會','feast 和 fest（節慶）有親戚關係','The village held a {feast} to celebrate the harvest.','村民舉辦盛宴慶祝豐收。');
-W(8,'merge','v.','合併、融合、結合','兩條河匯流成一條，就是 merge','Two small streams {merge} and become one river.','兩條小溪匯合成一條河。');
-W(8,'distinct','adj.','有所區分的、截然不同的；顯著的','dis-（分開）＋ stinct（刺、戳）→ 被清楚分隔開的','The twins look alike, but their personalities are quite {distinct}.','雙胞胎長得很像，但個性截然不同。');
-W(8,'endure','v.','持續存在、持久；忍受、忍耐','en-（使）＋ dur（硬、持久）→ 撐得久。dur 也在 during、duration','Some folk songs {endure} for hundreds of years.','有些民謠流傳了數百年。');
-W(8,'reminder','n.','提醒物；提醒的人或事；提示','re-（再）＋ mind（記得）＋ -er → 讓你再想起的東西','This old photo is a sweet {reminder} of our trip.','這張舊照片甜蜜地提醒著我們那趟旅行。');
-W(8,'linguistic','adj.','語言的；語言學的','lingu（舌頭、語言）→ 和 language 同源','She took a {linguistic} course on how languages change.','她修了一門關於語言如何演變的語言學課。',1);
-W(8,'outlier','n.','異類；特例；與眾不同的人或事物','out（外面）＋ lie（位在）＋ -er → 站在圈外的那一個','In our class his score was an {outlier}, far above everyone else.','在班上，他的成績是個特例，遠高於其他人。',1);
-W(8,'diner','n.','用餐者、食客；小餐館、美式餐館','dine（用餐）＋ -er → 用餐的人','The {diner} asked the waiter for the menu.','食客向服務生要了菜單。',1);
-W(8,'conquest','n.','征服、占領；攻克','con-（完全）＋ quest（尋求）→ 一路追到手','The {conquest} of the castle took three long months.','攻下那座城堡花了整整三個月。',1);
-W(8,'lavish','adj.','奢華的、豪華的；過於豐盛的','形容派對、宴會、禮物都很常見','They held a {lavish} wedding with a hundred dishes.','他們辦了一場有上百道菜的豪華婚禮。',1);
-W(8,'conversely','adv.','相反地；反之','con-（一起）＋ vers（轉）→ 轉個方向來看','Some people love cities; {conversely}, others prefer quiet villages.','有些人愛城市；反之，有些人偏好安靜的村莊。',1);
-W(8,'duality','n.','雙重性、二元性','du-（二）＋ -ity → 兩面性（dual、duo 同源）','The story explores the {duality} of good and evil.','這個故事探討善與惡的二元性。',1);
-W(8,'medieval','adj.','中世紀的','medi（中間）＋ ev（時代）→ 「中間的時代」','Knights and kings lived in {medieval} Europe, long before modern times.','騎士和國王生活在中世紀的歐洲，遠在現代之前。',1);
-/* Unit 9 */
-W(9,'presentation','n.','報告、簡報；授予；呈現','pre-（前）＋ sent（在場）→ 站到大家面前呈現','She practiced her {presentation} in front of the mirror.','她對著鏡子練習簡報。');
-W(9,'boost','v.','提升、增加；推動、促進（mood-boosting＝提振心情的）','boost 就像幫它「推一把」','A short walk can {boost} your mood.','短短散個步就能提振心情。');
-W(9,'accomplish','v.','完成；達成、實現','ac-（去）＋ com-（完全）＋ plish（填滿）→ 把它做到圓滿','With teamwork, we can {accomplish} more.','只要團隊合作，我們能完成更多事。');
-W(9,'purchase','n./v.','購買之物、購買行為；購買、採購','pur-（向前）＋ chase（追）→ 追到手買下來','Keep the receipt for every {purchase}.','每一筆購買都要保留收據。');
-W(9,'trigger','v.','引發、觸發；（名詞）誘因、扳機','扣下扳機 → 引發一連串反應','Loud noises can {trigger} a headache.','很大的噪音可能引發頭痛。');
-W(9,'psychology','n.','心理學','psycho（心靈）＋ -logy（…學）。形容詞 psychological、人 psychologist','She studies {psychology} to understand why people act the way they do.','她研讀心理學，想了解人為什麼會那樣行動。');
-W(9,'stability','n.','穩定（性）；穩固','stab ＝ stand（站立）→ 站得穩。形容詞 stable、動詞 stabilize','A regular sleep schedule brings {stability} to your day.','規律的睡眠讓你的一天更穩定。');
-W(9,'participant','n.','參加者、參與者','part（部分）＋ cip（拿取）＋ -ant（…的人）→ 拿走一份參與的人','Every {participant} received a small gift.','每位參加者都收到一份小禮物。');
-W(9,'implication','n.','可能的影響、後果（常用複數）；含意、暗示','im-（進入）＋ plic（折疊）→ 折在裡面的意思','What is the {implication} of this new rule?','這條新規定會帶來什麼影響？');
-W(9,'motivation','n.','動機、動力；積極性','mot（移動）→ 讓人動起來的力量。動詞 motivate','Prizes and praise can raise a student\'s {motivation} to study.','獎品和稱讚能提高學生的學習動力。');
-W(9,'polished','adj.','優雅的；得體的；精緻熟練的','polish（擦亮）＋ -ed → 被擦得亮晶晶的','Her {polished} speech impressed the judges.','她精緻熟練的演說讓評審印象深刻。');
-W(9,'outfit','n.','全套服裝；穿搭','out（外）＋ fit（裝備）→ 出門的整套裝備','I picked a bright {outfit} for the party.','我為派對挑了一套亮眼的穿搭。');
-W(9,'reinforce','v.','強化、加強；鞏固','re-（再）＋ in ＋ force（力量）→ 再灌注力量','Daily practice will {reinforce} what you learned in class.','每天練習會鞏固你在課堂上學到的東西。');
-W(9,'accessible','adj.','可取得的、可使用的；易接近的','ac-（去）＋ cess（走）＋ -ible（可…的）→ 走得到的。動詞 access','The library is {accessible} by bus and by bike.','搭公車或騎腳踏車都到得了圖書館。');
-W(9,'wardrobe','n.','衣櫥、衣櫃；全部服裝','ward（看守）＋ robe（袍子）→ 看守衣服的地方','My {wardrobe} is full of blue shirts.','我的衣櫥裡全是藍色襯衫。',1);
-W(9,'pandemic','n.','（疾病）大流行；流行病','pan-（全）＋ dem（人民）→ 影響全民的流行病','Schools moved online during the {pandemic}.','疫情期間，學校改成線上上課。',1);
-W(9,'hue','n.','顏色；色調','和 color 幾乎同義，但更常指「色調」','The sky turned a warm pink {hue} at sunset.','日落時天空染上暖粉色調。',1);
-W(9,'mindset','n.','心態；思維方式','mind（心）＋ set（設定）→ 心的設定','A growth {mindset} means seeing mistakes as chances to learn.','成長型心態就是把錯誤看成學習的機會。',1);
-W(9,'precision','n.','精確性；精密度','pre-（事先）＋ cis（切）→ 事先切得整整齊齊 → 精確','The surgeon cut with great {precision}, never missing a millimeter.','外科醫生以極高的精準度下刀，連一公釐都不偏。',1);
-W(9,'sharpen','v.','使更銳利、更敏銳；提升、改善（能力、思考）','sharp（銳利）＋ -en（使變成）→ 使變銳利','Please {sharpen} your pencil before the test.','考試前請把鉛筆削尖。',1);
-const WD=Object.fromEntries(WORDS.map(w=>[w.id,w]));
-
-const PH={
- p_tend:{en:'tend to',pos:'片語',zh:'tend to N. 照料、照顧（＝take care of / care for）；tend to V. 往往…、傾向於…',tip:'看 to 後面接什麼：名詞 → 照顧；動詞 → 傾向',exs:[['Nurses tend to the patients all night.','護理師整晚照顧病患。'],['People tend to feel sleepy after lunch.','人們吃完午餐後往往會想睡。']]},
- p_reduce:{en:'reduce sb/sth to N./V-ing',say:'reduce to',pos:'片語',zh:'使某人或某事物淪為…、變成…（常用被動 be reduced to）',tip:'通常帶有負面、不幸的意味',exs:[['After the flood, the town was reduced to mud and broken boards.','洪水過後，小鎮淪為一片泥濘和碎木板。'],['Tired and hungry, the hikers were reduced to sharing one apple.','又累又餓的登山客被迫分食一顆蘋果。']]},
- p_strip:{en:'strip sb of sth',pos:'片語',zh:'剝奪某人的…',tip:'常搭配 power（權力）、citizenship（公民身分）、dignity（尊嚴）',exs:[['The judge stripped the company of its license.','法官剝奪了那家公司的執照。'],['The mayor was stripped of his title after the scandal.','醜聞之後，市長被剝奪了頭銜。']]},
- p_whenever:{en:'whenever + S + V',say:'whenever',pos:'句型',zh:'每當、每次…（＝every time / each time）；也可表「無論何時」（＝no matter when）',tip:'引導時間副詞子句',exs:[['Whenever the wind blows, the old door creaks.','每當風一吹，那扇舊門就吱吱作響。'],['Whenever you are ready, just call me.','無論你何時準備好，打給我就行。']]},
- p_response:{en:'in response to N./V-ing',say:'in response to',pos:'片語',zh:'作為對…的回應；為了因應…',tip:'＝in answer to / in reply to，但用途更廣',exs:[['The shop added more chairs in response to growing crowds.','為了因應越來越多的人潮，店家增加了座位。']]},
- p_simply:{en:'simply put',pos:'片語',zh:'簡言之、簡單來說',tip:'也可以寫成 put simply',exs:[['Simply put, this app saves you time.','簡單來說，這個 app 幫你省時間。']]},
- p_associate:{en:'associate A with B',say:'associate with',pos:'片語',zh:'把 A 和 B 聯想在一起；常用被動 A be associated with B（A 與 B 有關）',tip:'同義：connect / link / relate A with (to) B',exs:[['Many people associate the color red with energy.','許多人把紅色和活力聯想在一起。'],['Poor sleep is often associated with bad moods.','睡眠不足常和壞心情有關。']]},
- p_athand:{en:'at hand',pos:'片語',zh:'手邊的；眼前的；即將到來的',tip:'the task at hand ＝ 眼前要做的事',exs:[['Let us finish the task at hand first.','我們先把眼前的工作做完。']]},
- p_turnout:{en:'turn out',pos:'片語',zh:'結果是…；原來是…（事情最後的結果，或發現與預期不同）',tip:'It turns out that S+V；turn out (to be) N./adj.',exs:[['It turned out that the shy new student was a great singer.','結果發現，那位害羞的新同學是個很棒的歌手。'],['The rumor turned out to be false.','那個傳言結果是假的。']]}
-};
-
-const PASS={
- 8:{title:'Beef Versus Cow',zh:'餐盤裡的英語歷史',note:'羽羽用自己的話改寫的課文重點版',paras:[
-  {en:"Here is a puzzle. In many languages, one word names both the animal and its meat. English is an unusual [[outlier|outlier]]. Farm workers [[tend to|p_tend]] cows and pigs all day, yet once those animals reach a [[diner|diner]]'s plate, they get new names: beef and pork. This is no [[coincidence|coincidence]]. It comes from a [[conquest|conquest]] that took place almost a thousand years ago.",
-   zh:"來個小謎題：在許多語言裡，同一個字既指動物、也指牠的肉。英語卻是個不尋常的特例。農場工人整天照顧牛和豬，但這些動物一到食客的盤子裡，就有了新名字：beef 和 pork。這不是巧合，而是近一千年前一場征服所留下的痕跡。"},
-  {en:"In 1066, William, Duke of Normandy, sailed across the sea. His soldiers [[invaded|invade]] England and [[overthrew|overthrow]] the king. The new rulers built a [[rigid|rigid]] class system, with French-speaking [[nobles|noble]] at the top. Many local English people [[were reduced to|p_reduce]] poor farm workers, [[stripped of|p_strip]] their land and their power. They had to [[labor|labor]] in the fields as [[peasants|peasant]].",
-   zh:"1066 年，諾曼第公爵威廉渡海而來。他的軍隊入侵英格蘭，推翻了國王。新統治者建立了僵化的階級制度，說法語的貴族站在最上層。許多當地英格蘭人淪為貧窮的農工，土地和權力都被剝奪，只能在田裡辛苦勞動，成為農民。"},
-  {en:"For about three hundred years, two languages lived side by side. The peasants kept using English words for the animals they raised: cow, pig, sheep. But the meat rarely reached their own tables.",
-   zh:"在接下來大約三百年裡，兩種語言並存。農民繼續用英語稱呼自己飼養的動物：cow、pig、sheep。但這些肉很少出現在他們自己的餐桌上。"},
-  {en:"Meanwhile, the nobles spoke French. They seldom [[encountered|encounter]] a living cow. What reached them were finished dishes at [[lavish|lavish]] [[feasts|feast]]. So they used French-based words: boeuf, porc and mouton. Over time, these became beef, pork and mutton.",
-   zh:"同時，貴族說的是法語。他們很少遇到活生生的牛，送到他們面前的只有奢華盛宴上的成品料理。所以他們用法語系的說法：boeuf、porc、mouton。久而久之，這些字變成了 beef、pork 和 mutton。"},
-  {en:"Later, the two groups began to [[merge|merge]] into one people. Both sets of words stayed, but each kept a [[distinct|distinct]] job: animal names for the farm, meat names for the table. Veal and venison follow the same rule. [[Conversely|conversely]], chicken and fish were food for everybody, so one name serves both the animal and the meal.",
-   zh:"後來，兩個群體逐漸融合成同一個民族。兩套詞彙都留了下來，但各司其職：農場用動物名，餐桌用肉的名稱。小牛肉 veal 和鹿肉 venison 也是同樣的規則。相反地，雞和魚是人人都吃的食物，所以動物和料理共用同一個名稱。"},
-  {en:"This [[duality|duality]] still [[endures|endure]]. Every menu is a small [[reminder|reminder]] of [[medieval|medieval]] England. [[Whenever|p_whenever]] you read one, remember that the [[linguistic|linguistic]] traces of history are hiding on your plate.",
-   zh:"這種雙重性至今仍然存在。每一份菜單都是中世紀英格蘭的小小提醒。每當你讀菜單時，請記得：歷史的語言痕跡就藏在你的餐盤上。"}
- ]},
- 9:{title:'Dress to De-Stress',zh:'穿出好心情、甩掉壓力',note:'羽羽用自己的話改寫的課文重點版',paras:[
-  {en:"Tomorrow is your big [[presentation|presentation]]. You open your [[wardrobe|wardrobe]], and every choice feels wrong. The colors look dull, and the style does not match your mood. What you may need is some dopamine dressing: picking clothes because they lift your spirits. The idea became popular during the [[pandemic|pandemic]].",
-   zh:"明天就要上台簡報了。你打開衣櫥，卻覺得每一件都不對勁：顏色悶悶的，款式也跟心情不搭。這時你可能需要一點「多巴胺穿搭」：挑選讓自己心情變好的衣服。這個概念在疫情期間開始流行。"},
-  {en:"Dopamine is a brain chemical linked to happiness. It shows up when you [[accomplish|accomplish]] something hard or enjoy a tasty treat. Clothes you love, whether a new [[purchase|purchase]] or an old favorite, can [[trigger|trigger]] the same feeling and [[boost|boost]] your mood.",
-   zh:"多巴胺是一種和快樂有關的腦內化學物質。當你完成困難的事，或享用美味點心時，它就會出現。你喜愛的衣服，不論是新買的還是穿慣的老朋友，也能引發同樣的感覺，讓心情變好。"},
-  {en:"Color matters too. In color [[psychology|psychology]], every [[hue|hue]] is tied to a feeling. Blue is often calm. Brown suggests [[stability|stability]]. Red can raise your heart rate, and green is linked to creativity.",
-   zh:"顏色也很重要。在色彩心理學裡，每一種色調都連結著一種感受。藍色常帶來平靜，棕色暗示穩定，紅色能讓心跳加快，綠色則和創造力有關。"},
-  {en:"Another idea is called enclothed cognition: what you wear can change your [[mindset|mindset]]. [[Simply put|p_simply]], clothes carry meanings, and those meanings shape how we act. In one famous experiment, [[participants|participant]] in white lab coats paid better attention. They [[associated|p_associate]] the coats with [[precision|precision]], and that link seemed to [[sharpen|sharpen]] their thinking.",
-   zh:"另一個概念叫「穿著認知」：你穿什麼，會改變你的思維方式。簡單來說，衣服帶有意義，而這些意義會影響我們的行為。在一項著名的實驗中，穿白色實驗袍的參與者更能集中注意力。他們把實驗袍和精確聯想在一起，這個連結似乎讓他們的思考變得更敏銳。"},
-  {en:"What are the [[implications|implication]]? Cozy clothes feel nice, but they may not build [[motivation|motivation]]. Dress for the task [[at hand|p_athand]]. A [[polished|polished]] [[outfit|outfit]] can make an interview feel easier, and colors you link with calm will [[reinforce|reinforce]] that calm. [[In response to|p_response]] stress, your closet is an [[accessible|accessible]] tool. It [[turns out|p_turnout]] that a closet can be a little mood toolbox.",
-   zh:"這有什麼實際影響？舒適的衣服雖然舒服，卻不一定能帶來動力。請為眼前的任務而穿。一套得體的穿搭能讓面試更輕鬆，而你與平靜聯想在一起的顏色，會強化那份平靜。面對壓力時，衣櫥是一個隨手可得的工具。結果發現，衣櫥其實是個小小的情緒工具箱。"}
- ]}
-};
-
-/* 片語題 */
-const PQ=[
- {u:8,s:'Every morning, Grandma ___ her little vegetable garden.',a:'tends to',o:['turns out','strips of','associates with'],zh:'tend to N. 照料、照顧',why:'tend to ＋ 名詞 → 照顧（花園、病人、動植物）'},
- {u:8,s:'After the earthquake, the old bridge was ___ a pile of stones.',a:'reduced to',o:['stripped of','tended to','associated with'],zh:'be reduced to N. 淪為…',why:'be reduced to ＋ N. → 淪落成…（通常是不好的結果）'},
- {u:8,s:'The king was ___ all his power after the rebellion.',a:'stripped of',o:['reduced to','tended to','turned out'],zh:'be stripped of sth 被剝奪…',why:'strip sb of sth → 剝奪某人的…，常搭配 power、citizenship、dignity'},
- {u:8,s:'___ the bell rings, the kids run to the playground.',a:'Whenever',o:['However','Although','Instead'],zh:'whenever + S + V 每當…',why:'whenever ＝ every time，「每當、每次…」'},
- {u:8,s:'People ___ feel sleepy after a big lunch.',a:'tend to',o:['reduce to','strip of','turn out'],zh:'tend to V. 往往…、傾向於…',why:'tend to ＋ 原形動詞 → 往往、傾向於…'},
- {u:8,s:'Tired and hungry, the hikers were ___ sharing one apple.',a:'reduced to',o:['stripped of','tended to','turned out'],zh:'be reduced to V-ing 被迫做…',why:'be reduced to ＋ V-ing → 淪落到（被迫）做…'},
- {u:9,s:'The shop changed its opening hours ___ customer complaints.',a:'in response to',o:['at hand','turned out','associated with'],zh:'in response to N. 為了因應…',why:'in response to ＋ N./V-ing → 作為對…的回應'},
- {u:9,s:'___, this app saves you time by doing boring tasks for you.',a:'Simply put',o:['At hand','Turn out','Associate with'],zh:'simply put 簡單來說',why:'simply put ＝ 簡言之，用來把複雜的事說得簡單'},
- {u:9,s:'Many people associate blue ___ the ocean.',a:'with',o:['to','of','for'],zh:'associate A with B',why:'associate A with B → 把 A 和 B 聯想在一起'},
- {u:9,s:'Let us forget the party and focus on the task ___.',a:'at hand',o:['in response','turned out','simply put'],zh:'the task at hand 眼前的任務',why:'at hand → 手邊的、眼前的、即將到來的'},
- {u:9,s:'We expected rain, but it ___ to be a sunny day.',a:'turned out',o:['tended','stripped','associated'],zh:'turn out to be… 結果是…',why:'turn out (to be) ＋ N./adj. → 結果是…、原來是…'},
- {u:9,s:'Getting too little sleep is often ___ bad moods.',a:'associated with',o:['turned out','reduced to','at hand'],zh:'A be associated with B',why:'A be associated with B → A 與 B 有關聯'},
- {u:9,s:'She raised her hand ___ the teacher\'s question.',a:'in response to',o:['simply put','at hand','stripped of'],zh:'in response to N.',why:'in response to ＋ N. → 針對…而回應'}
-];
-
-/* 字根題 [u, 問題, 正解, [錯解], 說明] */
-const ROOTS=[
- [8,'字首 bi- 是什麼意思？','二、雙',['三、多','一半','反對'],'bilingual 雙語、bilateral 雙邊、biannual 一年兩次，都有「二」的意思'],
- [8,'bilingual 的意思是？','雙語的',['單一語言的','語言學的','外國的'],'bi-（二）＋ lingual（語言的）'],
- [8,'biannual 通常指？','一年兩次的',['兩年一次的','一個月兩次的','每天一次的'],'bi-（二）＋ annual（一年的）→ 一年兩次'],
- [8,'coincidence 裡的 co- 是什麼意思？','一起、共同',['向下','再次','分開'],'co-（一起）＋ incid（落下）→ 剛好一起發生 → 巧合'],
- [8,'invade 裡的 in- 是什麼意思？','進入、向內',['向外','再次','分開'],'in-（進入）＋ vade（走）→ 走進去 → 入侵'],
- [8,'distinct 裡的 dis- 是什麼意思？','分開、不同',['一起','向前','再次'],'dis-（分開）→ 把東西分得清清楚楚'],
- [8,'medieval 裡的 medi- 是什麼意思？','中間',['前面','全部','兩個'],'medi（中間）＋ ev（時代）→ 中間的時代 → 中世紀'],
- [8,'reminder 裡的 re- 是什麼意思？','再次、回',['向外','之前','一起'],'re-（再）＋ mind（記得）→ 讓你再想起來的東西'],
- [8,'conversely 裡的 vers 是什麼意思？','轉',['走','切','站'],'con-（一起）＋ vers（轉）→ 轉個方向看 → 反之'],
- [8,'overthrow 裡的 over 帶有什麼感覺？','翻過去、倒下',['向內','很小','再一次'],'over（翻過去）＋ throw（丟）→ 把統治者翻倒 → 推翻'],
- [9,'de-stress 裡的 de- 是什麼意思？','去除、減少',['增加','兩個','一起'],'de- 有「去除、離開」的意思：de-stress ＝ 去除壓力'],
- [9,'de-stress 的意思是？','減輕壓力',['增加壓力','製造壓力','忽略壓力'],'de-（去除）＋ stress（壓力）'],
- [9,'presentation 裡的 pre- 是什麼意思？','前、預先',['之後','向下','中間'],'pre-（前）＋ sent（在場）→ 站到大家面前呈現'],
- [9,'sharp ＋ -en → sharpen，-en 表示？','使變成…',['一個人','很多','相反'],'-en 讓形容詞變成動詞：使變得…'],
- [9,'associate 的字尾 -ate 常表示？','使…、做…動作',['大量','…的人','向後'],'-ate、-ize、-en 都常用來造動詞'],
- [9,'pandemic 裡的 pan- 是什麼意思？','全部、全體',['一半','兩個','向下'],'pan-（全）＋ dem（人民）→ 影響全民的流行病'],
- [9,'outfit 裡的 out- 是什麼意思？','外面、外出',['內部','再次','之前'],'out（外）＋ fit（裝備）→ 出門的整套裝備'],
- [9,'participant 裡的 part 是什麼？','部分',['朋友','價格','時間'],'part（部分）＋ cip（拿取）＋ -ant（…的人）'],
- [9,'stability 裡的 stab 和哪個字同源？','stand（站立）',['sit（坐）','run（跑）','fly（飛）'],'stab 有「站立」的意思 → 站得穩 → 穩定'],
- [9,'precision 裡的 cis 是什麼意思？','切',['走','看','說'],'pre-（事先）＋ cis（切）→ 切得整整齊齊 → 精確'],
- [9,'accessible 裡的 cess 是什麼意思？','走',['切','站','轉'],'ac-（去）＋ cess（走）＋ -ible（可…的）→ 走得到的']
-];
-
-/* 翻譯排序 */
-const TRANS=[
- {zh:'雖然網路購物很方便，但沒有什麼比得上親自走進商店。',en:'Although online shopping is convenient, nothing beats visiting the store in person.',alts:['Online shopping is convenient, but nothing beats visiting the store in person.'],x:['beat','visit'],why:'nothing beats + N./V-ing 沒有什麼比得上…'},
- {zh:'唯有透過閱讀，你才能真正走進另一個世界。',en:'Only through reading can you truly enter another world.',alts:[],x:['you can','does'],why:'Only + 介系詞片語放句首 → 後面倒裝：can you…'},
- {zh:'每當下雨，我的貓就會躲進紙箱裡。',en:'Whenever it rains, my cat hides in a box.',alts:['Every time it rains, my cat hides in a box.'],x:['However','hide'],why:'whenever ＝ every time，每當…'},
- {zh:'這種頭痛通常與睡眠不足有關。',en:'This kind of headache is often linked to a lack of sleep.',alts:['This kind of headache is often related to a lack of sleep.','This kind of headache is often connected to a lack of sleep.','This kind of headache is often linked with a lack of sleep.'],x:['link','at'],why:'be linked to / related to / connected to ＝ 與…有關'},
- {zh:'那位運動員因為作弊而被剝奪了金牌。',en:'The athlete was stripped of the gold medal for cheating.',alts:[],x:['reduced','to'],why:'be stripped of sth 被剝奪…'},
- {zh:'簡單來說，這個 app 能幫你記錄睡眠。',en:'Simply put, this app helps you track your sleep.',alts:['Simply put, this app can help you track your sleep.'],x:['at hand','tracks'],why:'simply put ＝ 簡單來說'},
- {zh:'結果發現，那家小咖啡店比我想像的更有名。',en:'It turned out that the small cafe was more famous than I expected.',alts:['It turned out that the small cafe was more famous than I imagined.'],x:['turn','most'],why:'It turns/turned out that S+V 結果是…'},
- {zh:'鬧鐘一響，他就立刻起床了。',en:'As soon as the alarm went off, he got up.',alts:['The moment the alarm went off, he got up.','Once the alarm went off, he got up.'],x:['when','soon'],why:'as soon as ＝ 一…就…'},
- {zh:'許多人一醒來就開始滑手機。',en:'Many people check their phones as soon as they wake up.',alts:['Many people check their phones the moment they wake up.'],x:['woke','at'],why:'as soon as ＋ S + V 一…就…'}
-];
-
-const MEAT=[
- {an:'cow',em:'🐄',zh:'牛',meat:'beef',mz:'牛肉',fr:'boeuf'},
- {an:'pig',em:'🐖',zh:'豬',meat:'pork',mz:'豬肉',fr:'porc'},
- {an:'sheep',em:'🐑',zh:'綿羊',meat:'mutton',mz:'羊肉',fr:'mouton'},
- {an:'calf',em:'🐮',zh:'小牛',meat:'veal',mz:'小牛肉',fr:'veau'},
- {an:'deer',em:'🦌',zh:'鹿',meat:'venison',mz:'鹿肉',fr:'venaison'}
-];
-
-const MODES=[
- {id:'listen',icon:'👂',name:'聽音選字',d:'聽發音，選出單字'},
- {id:'meaning',icon:'🎯',name:'字義大挑戰',d:'看英文，選中文'},
- {id:'cloze',icon:'🧩',name:'句子填空',d:'選一個字補進句子'},
- {id:'phrase',icon:'✨',name:'片語魔法',d:'重點片語與句型'},
- {id:'roots',icon:'🌱',name:'字根小教室',d:'用字首字根猜字義'},
- {id:'trans',icon:'🔤',name:'翻譯拼拼樂',d:'點按鈕排出英文句子'},
- {id:'meat',icon:'🍖',name:'餐桌小劇場',d:'動物 vs 肉的名字（Unit 8）',only8:1},
- {id:'mix',icon:'🌈',name:'綜合大冒險',d:'10 題混合挑戰'}
-];
-
-const LVN=['蛋殼小雛鳥','見習小雲雀','羽毛收集家','天空巡遊者','浪花詩人','單字守護者','英文大白鷺'];
-const XPL=120;
-
-/* ============ 狀態 ============ */
-const KEY='yuyu-english-v1';
-function load(){try{return JSON.parse(localStorage.getItem(KEY))}catch(e){return null}}
-let S=Object.assign({xp:0,feathers:{},heard:0,rounds:0,perfect:0,bestCombo:0,stars:{},read:{},transDone:0,badges:{},quest:null,allQuest:0,sound:true},load()||{});
-function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
-let view='home',scope=8,fc={i:0,flip:false,mode:'card'},readTab=8,quiz=null;
+const WORDS=[{"u":8,"en":"coincidence","pos":"n.","zh":"巧合；碰巧的事","ex":"It was a happy {coincidence} that we chose the same cafe.","exzh":"我們挑了同一家咖啡店，真是個愉快的巧合。"},{"u":8,"en":"invade","pos":"v.","zh":"入侵、侵略；侵犯","ex":"The army planned to {invade} the island at dawn.","exzh":"軍隊計畫在黎明入侵這座島。"},{"u":8,"en":"overthrow","pos":"v.","zh":"（尤指以武力）推翻、打倒","ex":"The rebels hoped to {overthrow} the cruel king.","exzh":"反抗軍希望推翻殘暴的國王。"},{"u":8,"en":"rigid","pos":"adj.","zh":"僵化的、不易改變的；死板的","ex":"Her {rigid} schedule leaves no room for surprises.","exzh":"她死板的行程表容不下任何驚喜。"},{"u":8,"en":"labor","pos":"v.","zh":"勞動；辛苦工作（laboring 作形容詞：勞動的）","ex":"Farmers {labor} in the fields from sunrise to sunset.","exzh":"農夫從日出到日落都在田裡辛勤工作。"},{"u":8,"en":"peasant","pos":"n.","zh":"（尤指舊時的）農民、佃農","ex":"A poor {peasant} gave part of his crops to the lord.","exzh":"一位窮苦的農民把部分收成交給領主。"},{"u":8,"en":"noble","pos":"n.","zh":"貴族；品德高尚的人","ex":"The {noble} lived in a castle and owned a lot of land.","exzh":"那位貴族住在城堡裡，擁有大片土地。"},{"u":8,"en":"encounter","pos":"v.","zh":"（偶然）遇到；遭遇","ex":"You might {encounter} a deer on this quiet trail.","exzh":"你可能會在這條安靜的小徑上遇到一隻鹿。"},{"u":8,"en":"feast","pos":"n.","zh":"盛宴、宴會","ex":"The village held a {feast} to celebrate the harvest.","exzh":"村民舉辦盛宴慶祝豐收。"},{"u":8,"en":"merge","pos":"v.","zh":"合併、融合、結合","ex":"Two small streams {merge} and become one river.","exzh":"兩條小溪匯合成一條河。"},{"u":8,"en":"distinct","pos":"adj.","zh":"有所區分的、截然不同的；顯著的","ex":"The twins look alike, but their personalities are quite {distinct}.","exzh":"雙胞胎長得很像，但個性截然不同。"},{"u":8,"en":"endure","pos":"v.","zh":"持續存在、持久；忍受、忍耐","ex":"Some folk songs {endure} for hundreds of years.","exzh":"有些民謠流傳了數百年。"},{"u":8,"en":"reminder","pos":"n.","zh":"提醒物；提醒的人或事；提示","ex":"This old photo is a sweet {reminder} of our trip.","exzh":"這張舊照片甜蜜地提醒著我們那趟旅行。"},{"u":8,"en":"linguistic","pos":"adj.","zh":"語言的；語言學的","ex":"She took a {linguistic} course on how languages change.","exzh":"她修了一門關於語言如何演變的語言學課。"},{"u":8,"en":"outlier","pos":"n.","zh":"異類；特例；與眾不同的人或事物","ex":"In our class his score was an {outlier}, far above everyone else.","exzh":"在班上，他的成績是個特例，遠高於其他人。"},{"u":8,"en":"diner","pos":"n.","zh":"用餐者、食客；小餐館、美式餐館","ex":"The {diner} asked the waiter for the menu.","exzh":"食客向服務生要了菜單。"},{"u":8,"en":"conquest","pos":"n.","zh":"征服、占領；攻克","ex":"The {conquest} of the castle took three long months.","exzh":"攻下那座城堡花了整整三個月。"},{"u":8,"en":"lavish","pos":"adj.","zh":"奢華的、豪華的；過於豐盛的","ex":"They held a {lavish} wedding with a hundred dishes.","exzh":"他們辦了一場有上百道菜的豪華婚禮。"},{"u":8,"en":"conversely","pos":"adv.","zh":"相反地；反之","ex":"Some people love cities; {conversely}, others prefer quiet villages.","exzh":"有些人愛城市；反之，有些人偏好安靜的村莊。"},{"u":8,"en":"duality","pos":"n.","zh":"雙重性、二元性","ex":"The story explores the {duality} of good and evil.","exzh":"這個故事探討善與惡的二元性。"},{"u":8,"en":"medieval","pos":"adj.","zh":"中世紀的","ex":"Knights and kings lived in {medieval} Europe, long before modern times.","exzh":"騎士和國王生活在中世紀的歐洲，遠在現代之前。"},{"u":9,"en":"presentation","pos":"n.","zh":"報告、簡報；授予；呈現","ex":"She practiced her {presentation} in front of the mirror.","exzh":"她對著鏡子練習簡報。"},{"u":9,"en":"boost","pos":"v.","zh":"提升、增加；推動、促進（mood-boosting＝提振心情的）","ex":"A short walk can {boost} your mood.","exzh":"短短散個步就能提振心情。"},{"u":9,"en":"accomplish","pos":"v.","zh":"完成；達成、實現","ex":"With teamwork, we can {accomplish} more.","exzh":"只要團隊合作，我們能完成更多事。"},{"u":9,"en":"purchase","pos":"n./v.","zh":"購買之物、購買行為；購買、採購","ex":"Keep the receipt for every {purchase}.","exzh":"每一筆購買都要保留收據。"},{"u":9,"en":"trigger","pos":"v.","zh":"引發、觸發；（名詞）誘因、扳機","ex":"Loud noises can {trigger} a headache.","exzh":"很大的噪音可能引發頭痛。"},{"u":9,"en":"psychology","pos":"n.","zh":"心理學","ex":"She studies {psychology} to understand why people act the way they do.","exzh":"她研讀心理學，想了解人為什麼會那樣行動。"},{"u":9,"en":"stability","pos":"n.","zh":"穩定（性）；穩固","ex":"A regular sleep schedule brings {stability} to your day.","exzh":"規律的睡眠讓你的一天更穩定。"},{"u":9,"en":"participant","pos":"n.","zh":"參加者、參與者","ex":"Every {participant} received a small gift.","exzh":"每位參加者都收到一份小禮物。"},{"u":9,"en":"implication","pos":"n.","zh":"可能的影響、後果（常用複數）；含意、暗示","ex":"What is the {implication} of this new rule?","exzh":"這條新規定會帶來什麼影響？"},{"u":9,"en":"motivation","pos":"n.","zh":"動機、動力；積極性","ex":"Prizes and praise can raise a student's {motivation} to study.","exzh":"獎品和稱讚能提高學生的學習動力。"},{"u":9,"en":"polished","pos":"adj.","zh":"優雅的；得體的；精緻熟練的","ex":"Her {polished} speech impressed the judges.","exzh":"她精緻熟練的演說讓評審印象深刻。"},{"u":9,"en":"outfit","pos":"n.","zh":"全套服裝；穿搭","ex":"I picked a bright {outfit} for the party.","exzh":"我為派對挑了一套亮眼的穿搭。"},{"u":9,"en":"reinforce","pos":"v.","zh":"強化、加強；鞏固","ex":"Daily practice will {reinforce} what you learned in class.","exzh":"每天練習會鞏固你在課堂上學到的東西。"},{"u":9,"en":"accessible","pos":"adj.","zh":"可取得的、可使用的；易接近的","ex":"The library is {accessible} by bus and by bike.","exzh":"搭公車或騎腳踏車都到得了圖書館。"},{"u":9,"en":"wardrobe","pos":"n.","zh":"衣櫥、衣櫃；全部服裝","ex":"My {wardrobe} is full of blue shirts.","exzh":"我的衣櫥裡全是藍色襯衫。"},{"u":9,"en":"pandemic","pos":"n.","zh":"（疾病）大流行；流行病","ex":"Schools moved online during the {pandemic}.","exzh":"疫情期間，學校改成線上上課。"},{"u":9,"en":"hue","pos":"n.","zh":"顏色；色調","ex":"The sky turned a warm pink {hue} at sunset.","exzh":"日落時天空染上暖粉色調。"},{"u":9,"en":"mindset","pos":"n.","zh":"心態；思維方式","ex":"A growth {mindset} means seeing mistakes as chances to learn.","exzh":"成長型心態就是把錯誤看成學習的機會。"},{"u":9,"en":"precision","pos":"n.","zh":"精確性；精密度","ex":"The surgeon cut with great {precision}, never missing a millimeter.","exzh":"外科醫生以極高的精準度下刀，連一公釐都不偏。"},{"u":9,"en":"sharpen","pos":"v.","zh":"使更銳利、更敏銳；提升、改善（能力、思考）","ex":"Please {sharpen} your pencil before the test.","exzh":"考試前請把鉛筆削尖。"}];
+const short=z=>z.replace(/^（.*?）/,'').split('；')[0].split('、')[0].replace(/（.*?）/,'').trim();
 const $=s=>document.querySelector(s);
-const esc=s=>String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
-const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=(Math.random()*(i+1))|0;[a[i],a[j]]=[a[j],a[i]]}return a};
 const pick=(a,n)=>shuffle(a).slice(0,n);
-const lvl=()=>Math.floor(S.xp/XPL)+1;
-const featherN=()=>Object.keys(S.feathers).length;
-const starsTotal=()=>Object.values(S.stars).reduce((a,b)=>a+b,0);
-const zhShort=w=>w.zh.replace(/^（.*?）/,'').split('；')[0].replace(/（.*?）/,'');
-const scoped=()=>WORDS.filter(w=>scope==='all'||w.u===scope);
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+const exHTML=s=>esc(s).replace(/\{(.+?)\}/g,'<b>$1</b>');
+const plain=s=>s.replace(/\{(.+?)\}/g,'$1');
 
-/* ============ 特效 ============ */
-const cv=$('#fx'),ctx=cv.getContext('2d');
-let parts=[],raf=null;
-function resize(){const d=window.devicePixelRatio||1;cv.width=innerWidth*d;cv.height=innerHeight*d;ctx.setTransform(d,0,0,d,0,0)}
-addEventListener('resize',resize);resize();
-const CC=['#7fb8f0','#e8677f','#ffffff','#bfe0ff','#ffb3c6','#5f8fe0','#a8d8f0','#ffd1da'];
-function burst(x,y,n=50,o={}){
-  const angle=o.angle==null?-Math.PI/2:o.angle,spread=o.spread==null?Math.PI*2:o.spread,power=o.power||9;
-  for(let i=0;i<n;i++){
-    const a=angle+(Math.random()-.5)*spread,v=power*(.4+Math.random()*.8);
-    parts.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,w:5+Math.random()*5,h:9+Math.random()*12,r:Math.random()*6.28,vr:(Math.random()-.5)*.3,wob:Math.random()*6.28,ws:.1+Math.random()*.2,c:CC[i%CC.length],life:0,max:120+Math.random()*80,rib:Math.random()<.5});
-  }
-  if(!raf)raf=requestAnimationFrame(loop);
-}
-function loop(){
-  ctx.clearRect(0,0,innerWidth,innerHeight);
-  parts=parts.filter(p=>p.life<p.max&&p.y<innerHeight+40);
-  for(const p of parts){
-    p.life++;p.vy+=.22;p.vx*=.985;p.vy*=.985;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;p.wob+=p.ws;
-    ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.r);ctx.scale(1,Math.cos(p.wob));
-    ctx.globalAlpha=Math.min(1,(p.max-p.life)/30);ctx.fillStyle=p.c;
-    if(p.rib)ctx.fillRect(-p.w*.3,-p.h,p.w*.6,p.h*2.2);else ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);
-    ctx.restore();
-  }
-  if(parts.length)raf=requestAnimationFrame(loop);else{raf=null;ctx.clearRect(0,0,innerWidth,innerHeight)}
-}
-function burstEl(el,n=36){if(!el)return burst(innerWidth/2,innerHeight/2,n);const r=el.getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2,n,{spread:Math.PI*1.6,power:8})}
-function bigConfetti(){
-  for(let i=0;i<3;i++)setTimeout(()=>{
-    burst(innerWidth*.08,innerHeight*.8,60,{angle:-1.15,spread:.9,power:16});
-    burst(innerWidth*.92,innerHeight*.8,60,{angle:-Math.PI+1.15,spread:.9,power:16});
-    burst(innerWidth/2,innerHeight*.25,50,{spread:Math.PI*2,power:8});
-  },i*260);
-}
+/* ---- gentle state ---- */
+const KEY='rou-english-v1';
+let S={known:{},practiced:0,sound:true};
+try{const j=JSON.parse(localStorage.getItem(KEY));if(j)S=Object.assign(S,j)}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const heartN=()=>Object.keys(S.known).length;
+
+let screen='home', scope='all', deck={i:0,flip:false}, quiz=null;
+
+/* ---- mascot: a soft cloud-bun ---- */
+function mascot(cls=''){return `<svg class="mascot ${cls}" viewBox="0 0 120 120" aria-hidden="true">
+  <ellipse cx="60" cy="108" rx="30" ry="6" fill="#000" opacity=".07"/>
+  <path d="M62 14 c4 -6 15 -3 12 5 c8 -2 12 8 5 12 c-6 3 -14 -1 -17 -7 z" fill="#ff9ebd" opacity=".9"/>
+  <ellipse cx="41" cy="44" rx="12" ry="18" fill="#ffe7ef"/>
+  <ellipse cx="79" cy="44" rx="12" ry="18" fill="#ffe7ef"/>
+  <ellipse cx="41" cy="46" rx="6" ry="11" fill="#ffd0e0"/>
+  <ellipse cx="79" cy="46" rx="6" ry="11" fill="#ffd0e0"/>
+  <path d="M60 34 C86 34 98 54 96 74 C94 94 80 102 60 102 C40 102 26 94 24 74 C22 54 34 34 60 34 Z" fill="#fff4f8"/>
+  <path d="M60 34 C86 34 98 54 96 74 C94 94 80 102 60 102 C40 102 26 94 24 74 C22 54 34 34 60 34 Z" fill="none" stroke="#ffdcea" stroke-width="2.5"/>
+  <circle cx="47" cy="70" r="4.6" fill="#5b4e66"/>
+  <circle cx="73" cy="70" r="4.6" fill="#5b4e66"/>
+  <circle cx="48.6" cy="68.4" r="1.5" fill="#fff"/>
+  <circle cx="74.6" cy="68.4" r="1.5" fill="#fff"/>
+  <ellipse cx="38" cy="78" rx="6.5" ry="4.2" fill="#ffb3ce" opacity=".8"/>
+  <ellipse cx="82" cy="78" rx="6.5" ry="4.2" fill="#ffb3ce" opacity=".8"/>
+  <path d="M54 78 q6 6 12 0" fill="none" stroke="#c58aa0" stroke-width="2.6" stroke-linecap="round"/>
+</svg>`}
+
+/* ---- sound: gentle ---- */
 let AC;
-function tone(fr,dur=.11,type='sine'){
+function chime(freqs,dur=.13,type='sine',vol=.09){
   if(!S.sound)return;
-  try{
-    AC=AC||new (window.AudioContext||window.webkitAudioContext)();
-    fr.forEach((f,i)=>{
-      const o=AC.createOscillator(),g=AC.createGain();o.type=type;o.frequency.value=f;o.connect(g);g.connect(AC.destination);
-      const t=AC.currentTime+i*dur;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.14,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+dur*1.7);
-      o.start(t);o.stop(t+dur*1.9);
-    });
+  try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();
+    freqs.forEach((f,i)=>{const o=AC.createOscillator(),g=AC.createGain();o.type=type;o.frequency.value=f;
+      o.connect(g);g.connect(AC.destination);const t=AC.currentTime+i*dur;
+      g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(vol,t+.03);
+      g.gain.exponentialRampToValueAtTime(.0001,t+dur*1.9);o.start(t);o.stop(t+dur*2)});
   }catch(e){}
 }
-const SFX={ok:()=>tone([660,880]),bad:()=>tone([260,200],.13,'triangle'),win:()=>tone([523,659,784,1047],.12),lvl:()=>tone([392,523,659,784,1047,1319],.11),pop:()=>tone([700,1000],.07)};
-function toast(msg,ms=2200){const t=document.createElement('div');t.className='toast';t.innerHTML=msg;$('#toasts').appendChild(t);setTimeout(()=>t.classList.add('out'),ms);setTimeout(()=>t.remove(),ms+400)}
+const SFX={pop:()=>chime([620,880],.08),yay:()=>chime([660,880,1046],.12),soft:()=>chime([392,330],.16,'sine',.07)};
 
-/* ============ 發音 ============ */
+/* ---- speech ---- */
 let voice=null;
-function pickVoice(){
-  if(!('speechSynthesis' in window))return;
-  const vs=speechSynthesis.getVoices();
-  voice=vs.find(v=>/en[-_]US/i.test(v.lang)&&/samantha|google us|aria|zira|jenny|female/i.test(v.name))||vs.find(v=>/en[-_]US/i.test(v.lang))||vs.find(v=>/^en/i.test(v.lang))||null;
-}
-if('speechSynthesis' in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice}
-function say(text,rate=.9,count=true){
-  if(!('speechSynthesis' in window)){toast('這個瀏覽器不支援發音 🥲');return}
-  try{
-    speechSynthesis.cancel();
-    const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=rate;u.pitch=1.05;if(voice)u.voice=voice;
-    speechSynthesis.speak(u);
-  }catch(e){}
-  if(count){S.heard++;questTick('heard');progress()}
+function pickVoice(){if(!('speechSynthesis'in window))return;const vs=speechSynthesis.getVoices();
+  voice=vs.find(v=>/en[-_]US/i.test(v.lang)&&/samantha|google us|aria|zira|jenny|female/i.test(v.name))||vs.find(v=>/en[-_]US/i.test(v.lang))||vs.find(v=>/^en/i.test(v.lang))||null}
+if('speechSynthesis'in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice}
+function say(t,rate=.9){if(!('speechSynthesis'in window)){toast('這個瀏覽器不能發音 🥲');return}
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=rate;u.pitch=1.08;if(voice)u.voice=voice;speechSynthesis.speak(u)}catch(e){}}
+
+/* ---- little effects ---- */
+function toast(m){const t=document.createElement('div');t.className='toast';t.textContent=m;$('#toast').innerHTML='';$('#toast').appendChild(t);setTimeout(()=>t.classList.add('out'),1500);setTimeout(()=>t.remove(),1900)}
+function floatHearts(x,y,n=6){const box=$('#hearts'),ic=['💗','💕','🩷','✨','🌸'];
+  for(let i=0;i<n;i++){const h=document.createElement('div');h.className='fh';h.textContent=ic[(Math.random()*ic.length)|0];
+    h.style.left=(x+(Math.random()-.5)*90)+'px';h.style.top=(y+(Math.random()-.5)*30)+'px';h.style.animationDelay=(Math.random()*.25)+'s';
+    box.appendChild(h);setTimeout(()=>h.remove(),1800)}}
+function heartsFromEl(el,n=6){if(!el)return;const r=el.getBoundingClientRect();floatHearts(r.left+r.width/2,r.top+r.height/2,n)}
+
+/* ---- scoped words ---- */
+const scoped=()=>scope==='all'?WORDS:WORDS.filter(w=>w.u===+scope);
+
+/* ---- screens ---- */
+function head(){$('#mini').innerHTML=mascot('bob');$('#hc').textContent=heartN();}
+function render(){
+  head();
+  const map={home:rHome,cards:rCards,quiz:rQuiz,done:rDone};
+  $('#main').innerHTML=map[screen]();
+  $('#foot').innerHTML = screen==='home'
+    ? `一次一點點就好，柔柔加油 🌷　·　<button data-a="sound">${S.sound?'🔔 聲音開':'🔕 聲音關'}</button>`
+    : '';
+  window.scrollTo(0,0);
+  if(screen==='cards'){const w=scoped()[deck.i];/* say on open handled by nav */}
 }
 
-/* ============ 成就系統 ============ */
-const QUESTS=[{k:'heard',ic:'🔊',t:'聽 5 個發音',g:5},{k:'rounds',ic:'🎮',t:'完成 1 場挑戰',g:1},{k:'read',ic:'📖',t:'讀完 1 篇課文',g:1}];
-const dayKey=()=>new Date().toISOString().slice(0,10);
-function Qs(){if(!S.quest||S.quest.day!==dayKey())S.quest={day:dayKey(),heard:0,rounds:0,read:0,done:{}};return S.quest}
-function questTick(k,n=1){
-  const q=Qs();q[k]=(q[k]||0)+n;
-  QUESTS.forEach(d=>{if(q[k]>=d.g&&d.k===k&&!q.done[k]){q.done[k]=1;addXP(20);toast('🎯 任務完成：'+d.t+'　+20 XP');SFX.win();burst(innerWidth/2,90,40,{spread:Math.PI,power:7,angle:Math.PI/2})}});
-  if(QUESTS.every(d=>q.done[d.k])&&!S.allQuest){S.allQuest=1;addXP(30);bigConfetti();toast('🎉 今日任務全部完成！　+30 XP',3200)}
-}
-const BADGES=[
- {id:'first',ic:'🥚',n:'第一聲啼叫',d:'完成 1 場挑戰',p:()=>[S.rounds,1]},
- {id:'ears',ic:'🔊',n:'耳朵開機',d:'聽 20 次發音',p:()=>[S.heard,20]},
- {id:'voice',ic:'🎧',n:'發音達人',d:'聽 100 次發音',p:()=>[S.heard,100]},
- {id:'spark',ic:'🔥',n:'連擊小火苗',d:'單場連對 5 題',p:()=>[S.bestCombo,5]},
- {id:'blaze',ic:'☄️',n:'連擊烈焰',d:'單場連對 8 題',p:()=>[S.bestCombo,8]},
- {id:'perfect',ic:'💯',n:'完美羽毛',d:'單場全部答對',p:()=>[S.perfect,1]},
- {id:'f10',ic:'🪶',n:'羽毛收集家',d:'收集 10 片羽毛',p:()=>[featherN(),10]},
- {id:'f30',ic:'🧺',n:'羽毛滿籃',d:'收集 30 片羽毛',p:()=>[featherN(),30]},
- {id:'fall',ic:'👑',n:'全字收藏王',d:'收集全部單字羽毛',p:()=>[featherN(),WORDS.length]},
- {id:'reader',ic:'📖',n:'小小讀者',d:'讀完 2 篇課文',p:()=>[Object.keys(S.read).length,2]},
- {id:'trans',ic:'🧩',n:'翻譯小達人',d:'翻譯排序答對 5 句',p:()=>[S.transDone,5]},
- {id:'stars',ic:'⭐',n:'星星口袋',d:'累積 10 顆星星',p:()=>[starsTotal(),10]},
- {id:'xp',ic:'🌙',n:'浪花詩人',d:'累積 500 XP',p:()=>[S.xp,500]},
- {id:'quest',ic:'🎯',n:'任務達人',d:'完成一天的全部任務',p:()=>[S.allQuest,1]}
-];
-function checkBadges(){
-  BADGES.forEach(b=>{const [c,m]=b.p();if(!S.badges[b.id]&&c>=m){S.badges[b.id]=1;SFX.win();toast(b.ic+' 新徽章：'+b.n,2800);burst(innerWidth/2,80,50,{spread:Math.PI*1.4,power:8,angle:Math.PI/2})}});
-}
-function progress(){checkBadges();save();paintHeader()}
-function addXP(n){
-  const before=lvl();S.xp+=n;const after=lvl();
-  if(after>before){
-    setTimeout(()=>{
-      SFX.lvl();bigConfetti();
-      showModal(`<div class="big">🎉</div><h2 style="margin:6px 0">升級啦！Lv.${after}</h2><p style="margin:0 0 10px">你現在是「<b>${LVN[Math.min(after-1,LVN.length-1)]}</b>」</p><svg class="mascot hop" viewBox="0 0 120 120" style="margin:auto;display:block"><use href="#crow"/></svg><br><button class="btn wide" data-a="closemodal">太棒了！繼續加油</button>`);
-    },700);
-  }
-  save();paintHeader();
-}
-function collect(id,silent){
-  if(S.feathers[id])return false;
-  S.feathers[id]=1;
-  if(!silent){addXP(5);SFX.pop();toast('🪶 收集到新羽毛：<b>'+WD[id].en+'</b>')}
-  progress();return true;
-}
-
-/* ============ Modal / Sheet ============ */
-function showModal(h){const m=$('#modal');m.innerHTML='<div class="box">'+h+'</div>';m.classList.add('open')}
-function closeModal(){$('#modal').classList.remove('open')}
-function exHTML(s){return esc(s).replace(/\{(.+?)\}/g,'<b>$1</b>')}
-function plain(s){return s.replace(/\{(.+?)\}/g,'$1')}
-function spkBtns(t){return `<button class="spk" data-a="say" data-t="${esc(t)}" data-r="0.9" aria-label="發音">🔊</button><button class="spk slow" data-a="say" data-t="${esc(t)}" data-r="0.55" aria-label="慢速發音">🐢</button>`}
-function openSheet(id){
-  const isP=id.startsWith('p_'),w=isP?PH[id]:WD[id];
-  const exs=isP?w.exs:[[w.ex,w.exzh]];
-  const t=w.say||w.en;
-  $('#sheet').innerHTML=`<div class="handle"></div>
-   <div class="row between"><div><div class="sh-en">${esc(w.en)}</div><span class="pos">${w.pos}${w.ref?'・參考字彙':''}</span></div><div class="row">${spkBtns(t)}</div></div>
-   <div class="sh-zh">${esc(w.zh)}</div>
-   ${w.tip?`<div class="tip">🧩 ${esc(w.tip)}</div>`:''}
-   <div style="margin:10px 0">${exs.map(e=>`<div class="exbox" style="margin-bottom:8px"><div>${exHTML(e[0])} <button class="spk sm" style="width:30px;height:30px;font-size:13px;vertical-align:middle;display:inline-grid" data-a="say" data-t="${esc(plain(e[0]))}" data-r="0.85">🔊</button></div><div class="z">${esc(e[1])}</div></div>`).join('')}</div>
-   ${isP?'':`<button class="btn pink wide" data-a="collect" data-id="${id}">${S.feathers[id]?'🪶 已在收藏裡':'🪶 收進羽毛收藏'}</button>`}`;
-  $('#sheet').classList.add('open');$('#backdrop').classList.add('open');
-  say(t,.9);
-}
-function closeSheet(){$('#sheet').classList.remove('open');$('#backdrop').classList.remove('open')}
-
-/* ============ 畫面 ============ */
-const mascot=(c='')=>`<svg class="mascot ${c}" viewBox="0 0 120 120" aria-hidden="true"><use href="#crow"/></svg>`;
-function paintHeader(){
-  const inLv=S.xp%XPL;
-  $('#hd').innerHTML=`${mascot('sm')}<div class="hdt"><b>羽羽英文村</b><div class="xpbar"><i style="width:${inLv/XPL*100}%"></i></div></div><div class="pill">Lv.${lvl()}</div><div class="pill">🪶 ${featherN()}</div>`;
-}
-function unitSeg(all=true){
-  return `<div class="seg">${[8,9].map(u=>`<button class="${scope===u?'on':''}" data-a="unit" data-u="${u}">Unit ${u}</button>`).join('')}${all?`<button class="${scope==='all'?'on':''}" data-a="unit" data-u="all">全部</button>`:''}</div>`;
-}
-function render(keep){
-  document.body.classList.toggle('inquiz',view==='quiz');
-  const map={home:rHome,vocab:rVocab,read:rRead,challenge:rChallenge,quiz:rQuiz,result:rResult,ach:rAch};
-  const m=$('#main'),top=m.scrollTop;
-  m.innerHTML=map[view]();
-  m.scrollTop=keep?top:0;
-  document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.v===view||(view==='quiz'&&b.dataset.v==='challenge')||(view==='result'&&b.dataset.v==='challenge')));
-  paintHeader();
-  if(view==='quiz'&&quiz&&!keep){const q=quiz.qs[quiz.i];if(q.auto)setTimeout(()=>say(q.say,.85,false),300)}
-}
-
+const greets=['嗨，柔柔～今天想練什麼呢？','慢慢來，我陪你 ☁️','一天幾個字，就很棒了 🌸','準備好了嗎？我們開始吧 💗'];
 function rHome(){
-  const q=Qs();
-  const greet=pick(['啾～今天也一起玩英文吧！','每天一點點，羽毛越收越多！','點開單字就能聽發音喔 🔊','小任務完成就有彩帶！'],1)[0];
-  const un=(u,emo,t,zh,cls)=>{
-    const ws=WORDS.filter(w=>w.u===u),got=ws.filter(w=>S.feathers[w.id]).length;
-    return `<button class="ucard ${cls}" data-a="pickunit" data-u="${u}"><div class="emo">${emo}</div><div class="grow"><b>Unit ${u}：${t}</b><div class="sub">${zh}</div><div class="bar"><i style="width:${got/ws.length*100}%"></i></div><div class="sub">🪶 ${got}/${ws.length}</div></div><div style="font-size:24px">▶</div></button>`;
-  };
-  return `<div class="card hero">${mascot()}<div><h1>羽羽英文村</h1><div class="sub">跟羽羽一起，把單字和課文玩到滿分</div><div class="bubble">${greet}</div></div></div>
-  <div class="card"><h3>🎯 今日任務</h3>${QUESTS.map(d=>{const c=Math.min(q[d.k]||0,d.g);return `<div class="qrow"><div class="ic">${d.ic}</div><div class="tt"><div>${d.t} ${q.done[d.k]?'<span class="done">✔ 完成</span>':''}</div><div class="bar"><i style="width:${c/d.g*100}%"></i></div></div><div class="sub">${c}/${d.g}</div></div>`}).join('')}</div>
-  <div class="sec">選一個單元開始</div>
-  ${un(8,'🍖','Beef Versus Cow','語言與歷史：為什麼 cow 端上桌變成 beef？','u8')}
-  ${un(9,'👗','Dress to De-Stress','時尚心理學：衣服怎麼改變你的心情？','u9')}
-  <div class="row" style="justify-content:center;margin-top:4px"><button class="btn sky" data-a="nav" data-v="read">📖 讀課文</button><button class="btn pink" data-a="nav" data-v="challenge">🎮 去挑戰</button></div>`;
+  return `<div class="hero"><div class="sun"></div><div class="ring"></div>
+      ${mascot('bob')}
+      <h1>嗨，柔柔 ☁️</h1>
+      <p>${greets[(Math.random()*greets.length)|0]}</p></div>
+    <button class="big cards" data-a="go" data-s="cards"><div class="ic">🃏</div>
+      <div class="grow"><b>單字卡</b><span>翻翻卡片、聽發音，記住新單字</span></div><div class="go">›</div></button>
+    <button class="big play" data-a="go" data-s="quiz"><div class="ic">🎮</div>
+      <div class="grow"><b>小練習</b><span>看單字、選中文，輕鬆玩一輪</span></div><div class="go">›</div></button>`;
 }
 
-function rVocab(){
-  const L=scoped();if(fc.i>=L.length)fc.i=0;const w=L[fc.i];
-  let h=unitSeg()+`<div class="seg"><button class="${fc.mode==='card'?'on':''}" data-a="fcmode" data-m="card">🃏 單字卡</button><button class="${fc.mode==='list'?'on':''}" data-a="fcmode" data-m="list">📋 單字表</button></div>`;
-  if(fc.mode==='card'){
-    h+=`<div class="fcwrap"><div class="flip ${fc.flip?'on':''}" data-a="flip">
-      <div class="face"><span class="pos">${w.pos}${w.ref?'・參考':''}</span><div class="bigword">${w.en}</div><div class="row" style="justify-content:center">${spkBtns(w.en)}</div><div class="sub" style="margin-top:14px">👆 點卡片看中文</div></div>
-      <div class="face back"><div class="zhbig">${esc(w.zh)}</div><div class="tip">🧩 ${esc(w.tip)}</div><div class="exbox">${exHTML(w.ex)}<div class="z">${esc(w.exzh)}</div></div><button class="spk" data-a="say" data-t="${esc(plain(w.ex))}" data-r="0.85">🔊</button></div>
+function rCards(){
+  const L=scoped();if(deck.i>=L.length)deck.i=0;const w=L[deck.i];
+  const on=w&&S.known[w.en];
+  return `<button class="back" data-a="home">‹ 回家</button>
+    <div class="chips">
+      <div class="chip ${scope==8?'on':''}" data-a="scope" data-u="8">Unit 8</div>
+      <div class="chip ${scope==9?'on':''}" data-a="scope" data-u="9">Unit 9</div>
+      <div class="chip ${scope=='all'?'on':''}" data-a="scope" data-u="all">全部</div>
+    </div>
+    <div class="deck"><div class="flip ${deck.flip?'on':''}" data-a="flip">
+      <div class="face">
+        <span class="pos">${w.pos}</span>
+        <div class="word en">${esc(w.en)}</div>
+        <div class="spkrow">
+          <button class="spk" data-a="say" data-t="${esc(w.en)}" data-r="0.9" aria-label="唸這個字">🔊</button>
+          <button class="spk slow" data-a="say" data-t="${esc(w.en)}" data-r="0.55" aria-label="慢慢唸">🐢</button>
+        </div>
+        <div class="hint">👆 點卡片，看中文</div>
+      </div>
+      <div class="face back">
+        <div class="zh">${esc(w.zh)}</div>
+        <div class="ex">${exHTML(w.ex)}<div class="z">${esc(w.exzh)}</div></div>
+        <button class="spk mini" data-a="say" data-t="${esc(plain(w.ex))}" data-r="0.85" aria-label="唸例句">🔊</button>
+      </div>
     </div></div>
-    <div class="fcnav"><button class="btn ghost" data-a="fcnav" data-d="-1">◀ 上一個</button><span>${fc.i+1} / ${L.length}</span><button class="btn ghost" data-a="fcnav" data-d="1">下一個 ▶</button></div>
-    <button class="btn pink wide" data-a="collect" data-id="${w.id}">${S.feathers[w.id]?'🪶 已收藏':'✋ 我記住了！收進羽毛'}</button>`;
-  }else{
-    h+=`<div class="card">${L.map(x=>`<div class="wl" data-a="wl"><button class="spk" data-a="say" data-t="${esc(x.en)}" data-r="0.9">🔊</button><div class="grow"><div><span class="en">${x.en}</span> <span class="pos">${x.pos}</span> ${S.feathers[x.id]?'🪶':''}</div><div class="zh">${esc(x.zh)}</div></div><button class="btn sm ghost" data-a="tok" data-id="${x.id}">詳細</button></div>`).join('')}<div class="sub" style="margin-top:8px">點一下單字列，就能看中文。</div></div>`;
-  }
-  return h;
+    <div class="deknav">
+      <button class="btn ghost sm" data-a="nav" data-d="-1">‹ 上一個</button>
+      <span class="n">${deck.i+1} / ${L.length}</span>
+      <button class="btn ghost sm" data-a="nav" data-d="1">下一個 ›</button>
+    </div>
+    <button class="btn rose wide" data-a="know" data-en="${esc(w.en)}">${on?'💗 記住了':'我記住了 💗'}</button>`;
 }
 
-function tokHTML(t){return t.replace(/\[\[(.+?)\|(.+?)\]\]/g,(m,s,id)=>`<span class="tok ${id.startsWith('p_')?'ph':'wd'}" data-a="tok" data-id="${id}">${s}</span>`)}
-function rRead(){
-  const P=PASS[readTab];
-  return `<div class="seg"><button class="${readTab===8?'on':''}" data-a="rtab" data-u="8">Unit 8</button><button class="${readTab===9?'on':''}" data-a="rtab" data-u="9">Unit 9</button></div>
-  <div class="card"><h3 style="font-size:22px;margin:0">${P.title}</h3><div class="sub">${P.zh}</div><div class="sub" style="margin-top:4px">💡 ${P.note}</div>
-  <div class="legend" style="margin-top:8px"><span><span class="tok wd">單字</span> 點了看中文＋發音</span><span><span class="tok ph">片語</span> 重點句型</span></div></div>
-  ${P.paras.map((p,i)=>`<div class="card"><div class="para">${tokHTML(p.en)}</div>
-    <div class="row"><button class="btn sm sky" data-a="readpara" data-i="${i}">🔊 朗讀</button><button class="btn sm ghost" data-a="zh" data-i="${i}">🇹🇼 看整段中文</button></div>
-    <div class="zhp" id="zh${i}">${esc(p.zh)}</div></div>`).join('')}
-  <button class="btn good wide" data-a="readdone">${S.read[readTab]?'✔ 已讀完（再按一次也可以）':'我讀完了！🎉'}</button>`;
-}
-
-function rChallenge(){
-  const key=id=>id==='trans'?'all:trans':`${scope}:${id}`;
-  return unitSeg()+`<div class="grid2">${MODES.filter(m=>!(m.only8&&scope===9)).map(m=>{const s=S.stars[key(m.id)]||0;return `<button class="mode" data-a="startquiz" data-m="${m.id}"><div class="mi">${m.icon}</div><b>${m.name}</b><div class="d">${m.d}</div><div class="stars">${[1,2,3].map(i=>`<span class="${i>s?'off':''}">★</span>`).join('')}</div></button>`}).join('')}</div>
-  <div class="sub" style="text-align:center;margin-top:12px">答對 ≥ 90% 拿 3 顆星 ⭐⭐⭐<br>沒有要打字，全部點按鈕就好！</div>`;
-}
-
-/* ---- 出題 ---- */
-function distract(w,n=3){
-  const base=w.pos.split('/')[0];
-  const others=WORDS.filter(x=>x.id!==w.id);
-  let same=shuffle(others.filter(x=>x.pos.split('/')[0]===base&&(x.u===w.u)));
-  if(same.length<n)same=same.concat(shuffle(others.filter(x=>x.pos.split('/')[0]===base&&x.u!==w.u)));
-  let r=same.slice(0,n);
-  if(r.length<n)r=r.concat(pick(others.filter(x=>!r.includes(x)),n-r.length));
-  return r;
-}
-function qListen(w){
-  return {t:'choice',wid:w.id,title:'👂 聽發音，選出正確的單字',body:`<button class="spk bigspk" data-a="qsay">🔊</button><div class="sub">再聽一次可以按喇叭</div>`,say:w.en,auto:1,
-    opts:shuffle([w,...distract(w)]).map(x=>({label:x.en,ok:x.id===w.id})),why:`<b>${w.en}</b> ＝ ${esc(zhShort(w))}`,sayAfter:w.en};
-}
-function qMeaning(w){
-  const ds=distract(w,6).filter(x=>zhShort(x)!==zhShort(w));const seen={};const use=[];
-  ds.forEach(x=>{if(!seen[zhShort(x)]&&use.length<3){seen[zhShort(x)]=1;use.push(x)}});
-  return {t:'choice',wid:w.id,title:'🎯 這個字是什麼意思？',body:`<div class="bigword">${w.en}</div><div class="row" style="justify-content:center;margin-top:6px">${spkBtns(w.en)}</div>`,say:w.en,
-    opts:shuffle([w,...use]).map(x=>({label:esc(zhShort(x)),ok:x.id===w.id})),why:`<b>${w.en}</b>（${w.pos}）${esc(w.zh)}`,sayAfter:w.en};
-}
-function qCloze(w){
-  const s=w.ex.replace(/\{(.+?)\}/,'<span class="blank" id="bl">　　　</span>');
-  return {t:'choice',wid:w.id,cloze:w.en,title:'🧩 選一個字補進句子',body:`<div class="qsent">${s}</div><div class="sub" style="margin-top:8px">💬 ${esc(w.exzh)}</div>`,
-    opts:shuffle([w,...distract(w)]).map(x=>({label:x.en,ok:x.id===w.id})),why:`<b>${w.en}</b>（${w.pos}）${esc(w.zh)}`,sayAfter:plain(w.ex)};
-}
-function qPhrase(p){
-  const s=esc(p.s).replace('___','<span class="blank" id="bl">　　　</span>');
-  return {t:'choice',cloze:p.a,title:'✨ 選出正確的片語或句型',body:`<div class="qsent">${s}</div>`,
-    opts:shuffle([p.a,...p.o]).map(x=>({label:esc(x),ok:x===p.a})),why:`<b>${esc(p.zh)}</b><br>${esc(p.why)}`,sayAfter:p.s.replace('___',p.a)};
-}
-function qRoot(r){
-  return {t:'choice',title:'🌱 字根小教室',body:`<div class="qsent">${esc(r[1])}</div>`,opts:shuffle([r[2],...r[3]]).map(x=>({label:esc(x),ok:x===r[2]})),why:esc(r[4])};
-}
-function qMeat(){
-  const m=pick(MEAT,1)[0],dir=Math.random()<.5;
-  if(dir){
-    const ws=pick(MEAT.filter(x=>x!==m),3);
-    return {t:'choice',title:'🍖 餐桌小劇場：動物 → 菜單',body:`<div style="font-size:56px;line-height:1.1">${m.em}</div><div class="qsent">${m.an}（${m.zh}）端上餐桌，菜單上會寫成？</div>`,
-      opts:shuffle([m,...ws]).map(x=>({label:x.meat,ok:x===m})),why:`<b>${m.meat}</b>（${m.mz}）源自法語 <i>${m.fr}</i>`,sayAfter:m.meat};
-  }
-  const ws=pick(MEAT.filter(x=>x!==m),3);
-  return {t:'choice',title:'🍖 餐桌小劇場：菜單 → 動物',body:`<div class="bigword">${m.meat}</div><div class="row" style="justify-content:center;margin-top:6px">${spkBtns(m.meat)}</div><div class="qsent" style="margin-top:6px">這道菜是哪種動物？</div>`,
-    opts:shuffle([m,...ws]).map(x=>({label:`${x.em} ${x.an}（${x.zh}）`,ok:x===m})),why:`<b>${m.meat}</b>（${m.mz}）源自法語 <i>${m.fr}</i>；動物本身是英語 ${m.an}`,sayAfter:m.meat};
-}
-function qTrans(t){
-  const chips=shuffle([...t.en.split(' '),...t.x].map((w,i)=>({id:'c'+i,w})));
-  return {t:'trans',zh:t.zh,en:t.en,alts:t.alts,chips,why:esc(t.why),sayAfter:t.en};
-}
-function build(mode){
-  const L=scoped(),pq=PQ.filter(p=>scope==='all'||p.u===scope),rt=ROOTS.filter(r=>scope==='all'||r[0]===scope);
-  switch(mode){
-    case 'listen':return pick(L,8).map(qListen);
-    case 'meaning':return pick(L,8).map(qMeaning);
-    case 'cloze':return pick(L,8).map(qCloze);
-    case 'phrase':return pick(pq,Math.min(8,pq.length)).map(qPhrase);
-    case 'roots':return pick(rt,Math.min(8,rt.length)).map(qRoot);
-    case 'meat':return Array.from({length:8},qMeat);
-    case 'trans':return pick(TRANS,5).map(qTrans);
-    case 'mix':{
-      const a=[...pick(L,3).map(qListen),...pick(L,3).map(qMeaning),...pick(L,2).map(qCloze),...pick(pq,Math.min(1,pq.length)).map(qPhrase),...pick(rt,1).map(qRoot)];
-      return shuffle(a);
-    }
-  }
+/* practice */
+function buildQuiz(){
+  const L=scoped(),qn=Math.min(6,L.length);
+  const words=pick(L,qn);
+  quiz={i:0,right:0,words:words.map(w=>{
+    const others=WORDS.filter(x=>x.en!==w.en && short(x.zh)!==short(w.zh));
+    const opts=shuffle([w,...pick(others,3)]).map(x=>({t:short(x.zh),ok:x.en===w.en}));
+    return {en:w.en,opts,ex:w.ex};
+  }),done:false};
 }
 function rQuiz(){
-  const q=quiz.qs[quiz.i];
-  let h=`<div class="qtop"><button class="x" data-a="quit" aria-label="離開">✕</button><div class="pbar"><i style="width:${quiz.i/quiz.qs.length*100}%"></i></div><div class="combo ${quiz.combo>=2?'hot':''}">🔥 ${quiz.combo}</div></div>`;
-  if(q.t==='choice'){
-    h+=`<div class="card qcard"><div class="qtitle">${q.title}</div>${q.body}</div><div class="opts">${q.opts.map((o,i)=>`<button class="opt" data-a="opt" data-i="${i}">${o.label}</button>`).join('')}</div>`;
-  }else{
-    const st=quiz.tr,byId=Object.fromEntries(q.chips.map(c=>[c.id,c]));
-    h+=`<div class="card qcard"><div class="qtitle">🔤 點按鈕，排出正確的英文句子</div><div class="zhq">${esc(q.zh)}</div>
-      <div class="ans" id="ans">${st.placed.length?st.placed.map(id=>`<button class="chip on" data-a="unchip" data-id="${id}">${esc(byId[id].w)}</button>`).join(''):'<span class="ph">點下面的單字，排在這裡 ✨</span>'}</div>
-      <div class="bank">${q.chips.filter(c=>!st.placed.includes(c.id)).map(c=>`<button class="chip" data-a="chip" data-id="${c.id}">${esc(c.w)}</button>`).join('')}</div>
-      <div class="row" style="justify-content:center"><button class="btn ghost" data-a="clear">清除</button><button class="btn good" data-a="check">檢查 ✔</button>${st.fails>=2?'<button class="btn sky" data-a="reveal">看答案</button>':''}</div></div>`;
-  }
-  return h+`<div id="fb" class="fb"></div>`;
+  if(!quiz)buildQuiz();
+  const q=quiz.words[quiz.i];
+  return `<button class="back" data-a="home">‹ 回家</button>
+    <div class="rowtop"><span class="soft-sub">第 ${quiz.i+1} / ${quiz.words.length} 個</span>
+      <span class="hearts" style="box-shadow:none;background:transparent;color:var(--rose-deep)">💗 ${quiz.right}</span></div>
+    <div class="pbar"><i style="width:${quiz.i/quiz.words.length*100}%"></i></div>
+    <div class="panel" style="text-align:center;margin-top:14px">
+      <div class="qask">這個字是什麼意思呢？</div>
+      <div class="qword en">${esc(q.en)}</div>
+      <div class="spkrow" style="margin-top:12px">
+        <button class="spk" data-a="say" data-t="${esc(q.en)}" data-r="0.9">🔊</button>
+        <button class="spk slow" data-a="say" data-t="${esc(q.en)}" data-r="0.55">🐢</button>
+      </div>
+    </div>
+    <div class="opts">${q.opts.map((o,i)=>`<button class="opt" data-a="pick" data-i="${i}">${esc(o.t)}</button>`).join('')}</div>
+    <div id="fb"></div>`;
 }
-function startQuiz(mode){
-  const qs=build(mode);
-  if(!qs||!qs.length){toast('這個範圍還沒有題目喔');return}
-  quiz={mode,qs,i:0,score:0,combo:0,maxCombo:0,done:false,xp:0,newF:0,tr:{placed:[],fails:0},key:mode==='trans'?'all:trans':`${scope}:${mode}`};
-  view='quiz';render();
-}
-function fbShow(ok,html,hop=true){
-  const fb=$('#fb');if(!fb)return;
-  const last=quiz.i>=quiz.qs.length-1;
-  fb.className='fb show '+(ok?'good':'bad');
-  fb.innerHTML=`${mascot('md '+(ok&&hop?'hop':''))}<div class="msg"><b>${ok?pick(['答對了！太厲害 ✨','漂亮！','完美～','答對啦！🎉'],1)[0]:'差一點點～'}</b><br>${html}</div><button class="btn ${ok?'good':'pink'} sm" data-a="next">${last?'看結果':'下一題'}</button>`;
-  fb.scrollIntoView({behavior:'smooth',block:'end'});
-}
-function finishQ(ok,el){
-  const q=quiz.qs[quiz.i];quiz.done=true;
-  if(ok){
-    quiz.score++;quiz.combo++;quiz.maxCombo=Math.max(quiz.maxCombo,quiz.combo);
-    quiz.xp+=10+(quiz.combo>=3?5:0);SFX.ok();burstEl(el,34);
-    if(q.wid&&collect(q.wid,true))quiz.newF++;
-  }else{quiz.combo=0;SFX.bad()}
-  const cb=$('.combo');if(cb){cb.textContent='🔥 '+quiz.combo;cb.classList.toggle('hot',quiz.combo>=2)}
-  if(q.sayAfter)setTimeout(()=>say(q.sayAfter,.85,false),350);
-  fbShow(ok,q.why||'');
-}
-function choose(i){
+function pickOpt(i){
   if(quiz.done)return;
-  const q=quiz.qs[quiz.i],btns=document.querySelectorAll('.opt'),ok=q.opts[i].ok;
-  btns.forEach((b,j)=>{b.disabled=true;if(q.opts[j].ok)b.classList.add('ok');else if(j===i)b.classList.add('no');else b.classList.add('dim')});
-  const bl=$('#bl');if(bl&&q.cloze){bl.textContent=q.cloze;bl.classList.add('fill')}
-  finishQ(ok,btns[i]);
+  const q=quiz.words[quiz.i],opts=document.querySelectorAll('.opt'),ok=q.opts[i].ok;
+  quiz.done=true;
+  opts.forEach((b,j)=>{b.disabled=true;if(q.opts[j].ok)b.classList.add('ok');else if(j===i)b.classList.add('no');else b.classList.add('dim')});
+  const last=quiz.i>=quiz.words.length-1;
+  if(ok){quiz.right++;SFX.yay();heartsFromEl(opts[i],7);
+    if(!S.known[q.en]){S.known[q.en]=1;save();head()}
+  }else{SFX.soft()}
+  setTimeout(()=>say(q.en,.9),260);
+  const msgs=ok?['答對了，好棒 💗','就是這個～柔柔好厲害 ✨','太棒了！🌸']:['沒關係，我們再看一次 ☁️','差一點點，記起來就好 💕'];
+  const fb=$('#fb');fb.innerHTML=`<div class="cheer">${mascot(ok?'wig':'')}<div class="msg">${msgs[(Math.random()*msgs.length)|0]}</div>
+    <button class="btn ${ok?'rose':'aqua'} sm" data-a="qnext">${last?'看成果':'下一個'}</button></div>`;
+  fb.querySelector('.cheer').scrollIntoView({behavior:'smooth',block:'end'});
 }
-const norm=s=>s.toLowerCase().replace(/[.,!?]/g,'').replace(/\s+/g,' ').trim();
-function transAnswer(){const q=quiz.qs[quiz.i],by=Object.fromEntries(q.chips.map(c=>[c.id,c.w]));return quiz.tr.placed.map(id=>by[id]).join(' ')}
-function nextQ(){
-  if(quiz.i>=quiz.qs.length-1)return finishQuiz();
-  quiz.i++;quiz.done=false;quiz.tr={placed:[],fails:0};render();
-}
-function finishQuiz(){
-  const pct=quiz.score/quiz.qs.length,stars=pct>=.9?3:pct>=.6?2:pct>=.3?1:0,perfect=quiz.score===quiz.qs.length;
-  const bonus=stars*10+(perfect?20:0),total=quiz.xp+bonus;
-  S.rounds++;if(perfect)S.perfect++;S.bestCombo=Math.max(S.bestCombo,quiz.maxCombo);
-  S.stars[quiz.key]=Math.max(S.stars[quiz.key]||0,stars);
-  quiz.res={pct,stars,perfect,bonus,total};
-  questTick('rounds');addXP(total);progress();
-  view='result';render();
-  if(stars>0){SFX.win();bigConfetti()}else SFX.bad();
-}
-function rResult(){
-  const r=quiz.res,msg=r.stars===3?'超級厲害！你是英文大白鷺！':r.stars===2?'很棒喔！再一點點就滿分了':r.stars===1?'不錯～再挑戰一次會更好！':'沒關係，多聽幾次發音再來吧！';
-  return `<div class="card" style="text-align:center">${mascot(r.stars?'hop':'')}<div class="big">${Math.round(r.pct*100)}%</div><div class="sub">答對 ${quiz.score} / ${quiz.qs.length} 題</div>
-   <div class="rstars">${[1,2,3].map(i=>`<span class="star ${i>r.stars?'off':''}" style="animation-delay:${.25+i*.28}s">⭐</span>`).join('')}</div>
-   <div style="font-weight:900;font-size:18px">${msg}</div></div>
-  <div class="card"><div class="stat"><div><b>+${r.total}</b><span>XP</span></div><div><b>${quiz.maxCombo}</b><span>最高連擊</span></div><div><b>${quiz.newF}</b><span>新羽毛</span></div><div><b>Lv.${lvl()}</b><span>目前等級</span></div></div>
-  ${r.perfect?'<div class="done" style="text-align:center;margin-top:8px">💯 全對加碼 +20 XP</div>':''}</div>
-  <div class="row" style="justify-content:center"><button class="btn pink" data-a="startquiz" data-m="${quiz.mode}">🔁 再玩一次</button><button class="btn sky" data-a="nav" data-v="challenge">🎮 回挑戰</button></div>`;
-}
-function rAch(){
-  const inLv=S.xp%XPL,ln=LVN[Math.min(lvl()-1,LVN.length-1)];
-  const grp=u=>`<div class="sec">Unit ${u} 羽毛收藏（${WORDS.filter(w=>w.u===u&&S.feathers[w.id]).length}/${WORDS.filter(w=>w.u===u).length}）</div><div class="card"><div class="fgrid">${WORDS.filter(w=>w.u===u).map(w=>`<button class="fchip ${S.feathers[w.id]?'':'lock'}" data-a="tok" data-id="${w.id}">🪶 ${w.en}</button>`).join('')}</div></div>`;
-  return `<div class="card hero">${mascot()}<div style="flex:1"><div class="lvl">Lv.${lvl()}・${ln}</div><div class="bar" style="height:16px"><i style="width:${inLv/XPL*100}%;background:linear-gradient(90deg,var(--gold),var(--rose))"></i></div><div class="sub">再 ${XPL-inLv} XP 升級</div></div></div>
-  <div class="card"><div class="stat"><div><b>🪶 ${featherN()}</b><span>羽毛</span></div><div><b>⭐ ${starsTotal()}</b><span>星星</span></div><div><b>🔥 ${S.bestCombo}</b><span>最高連擊</span></div><div><b>🔊 ${S.heard}</b><span>聽過發音</span></div></div></div>
-  <div class="sec">徽章（${Object.keys(S.badges).length}/${BADGES.length}）</div>
-  <div class="card"><div class="badges">${BADGES.map(b=>{const [c,m]=b.p(),got=S.badges[b.id];return `<div class="badge ${got?'':'lock'}"><div class="bi">${b.ic}</div><div><b>${b.n}</b><small>${got?b.d:b.d+'（'+Math.min(c,m)+'/'+m+'）'}</small></div></div>`}).join('')}</div></div>
-  ${grp(8)}${grp(9)}
-  <div class="row between" style="margin:4px 2px 10px"><button class="btn sm ghost" data-a="sound">${S.sound?'🔔 音效：開':'🔕 音效：關'}</button><button class="btn sm ghost" data-a="reset">重置進度</button></div>`;
+function qNext(){
+  if(quiz.i>=quiz.words.length-1){S.practiced+=quiz.right;save();screen='done';render();
+    SFX.yay();setTimeout(()=>floatHearts(innerWidth/2,innerHeight*.42,12),150);return}
+  quiz.i++;quiz.done=false;render();
 }
 
-/* ============ 事件 ============ */
+function rDone(){
+  const n=quiz?quiz.right:0,tot=quiz?quiz.words.length:0;
+  const msg=n===tot?'全部都對了，柔柔好棒！':n>=tot*0.6?'做得很好，繼續保持 🌸':'有練習就是進步，慢慢來 ☁️';
+  return `<div class="panel done">${mascot('bob')}
+    <div class="count">${n} / ${tot}</div>
+    <h2>柔柔今天好棒 💗</h2>
+    <p>${msg}</p>
+    <button class="btn rose wide" data-a="go" data-s="quiz" style="margin-bottom:12px">再玩一次 🎮</button>
+    <button class="btn aqua wide" data-a="go" data-s="cards">回去看單字卡 🃏</button>
+    <div style="margin-top:14px" class="soft-sub">你已經收集了 💗 ${heartN()} 個記住的字</div>
+  </div>`;
+}
+
+/* ---- events ---- */
 const A={
- nav:d=>{closeSheet();if(view==='quiz'&&d.v!=='challenge'&&!confirm('要離開這場挑戰嗎？'))return;view=d.v;render()},
- unit:d=>{scope=d.u==='all'?'all':+d.u;fc.i=0;fc.flip=false;render(true)},
- pickunit:d=>{scope=+d.u;readTab=+d.u;fc.i=0;fc.flip=false;view='vocab';render()},
- fcmode:d=>{fc.mode=d.m;render(true)},
- flip:()=>{fc.flip=!fc.flip;$('.flip').classList.toggle('on',fc.flip);if(fc.flip)SFX.pop()},
- fcnav:d=>{const n=scoped().length;fc.i=(fc.i+ +d.d+n)%n;fc.flip=false;render(true);say(scoped()[fc.i].en,.9)},
- wl:(d,el)=>{el.classList.toggle('open')},
- say:d=>say(d.t,+d.r||.9),
- qsay:()=>say(quiz.qs[quiz.i].say,.8,false),
- collect:(d,el)=>{
-   if(S.feathers[d.id]){toast('這片羽毛已經在收藏裡囉 🪶');return}
-   collect(d.id);burstEl(el,40);
-   if(view==='vocab')render(true);else if(el)el.textContent='🪶 已在收藏裡';
- },
- tok:d=>openSheet(d.id),
- closesheet:closeSheet,
- closemodal:closeModal,
- rtab:d=>{readTab=+d.u;render()},
- zh:(d,el)=>{const z=$('#zh'+d.i);z.classList.toggle('show');el.textContent=z.classList.contains('show')?'🙈 收起中文':'🇹🇼 看整段中文'},
- readpara:d=>say(PASS[readTab].paras[+d.i].en.replace(/\[\[(.+?)\|.+?\]\]/g,'$1'),.85,false),
- readdone:(d,el)=>{
-   const first=!S.read[readTab];S.read[readTab]=1;
-   if(first){addXP(20);questTick('read')}
-   SFX.win();bigConfetti();toast(first?'📖 讀完課文！　+20 XP':'📖 再讀一次，記得更牢！');progress();render(true);
- },
- startquiz:d=>{closeSheet();startQuiz(d.m)},
- opt:d=>choose(+d.i),
- next:nextQ,
- quit:()=>{if(confirm('要離開這場挑戰嗎？')){view='challenge';render()}},
- chip:d=>{if(quiz.done)return;quiz.tr.placed.push(d.id);SFX.pop();render(true)},
- unchip:d=>{if(quiz.done)return;quiz.tr.placed=quiz.tr.placed.filter(x=>x!==d.id);render(true)},
- clear:()=>{if(quiz.done)return;quiz.tr.placed=[];render(true)},
- check:()=>{
-   if(quiz.done)return;const q=quiz.qs[quiz.i];
-   if(!quiz.tr.placed.length){toast('先點單字排句子喔 ✨');return}
-   const a=norm(transAnswer());
-   if([q.en,...q.alts].map(norm).includes(a)){
-     if(quiz.tr.fails<2){S.transDone++}
-     finishQ(quiz.tr.fails<2,$('#ans'));
-     const an=$('#ans');if(an)an.style.borderColor='var(--good)';
-     document.querySelectorAll('.chip,.btn.ghost,.btn.good:not(.sm)').forEach(b=>{if(b.dataset.a!=='next')b.disabled=true});
-   }else{
-     quiz.tr.fails++;SFX.bad();quiz.combo=0;
-     const an=$('#ans');an.classList.remove('shake');void an.offsetWidth;an.classList.add('shake');
-     toast(quiz.tr.fails>=2?'再試一次，或按「看答案」':'還不太對，換個順序試試 💪');
-     if(quiz.tr.fails===2)render(true);
-   }
- },
- reveal:()=>{
-   if(quiz.done)return;const q=quiz.qs[quiz.i];quiz.done=true;quiz.combo=0;SFX.bad();
-   fbShow(false,`正確答案：<b>${esc(q.en)}</b><br>${q.why}`,false);
-   setTimeout(()=>say(q.en,.85,false),300);
-   document.querySelectorAll('.chip,.btn:not(.sm)').forEach(b=>b.disabled=true);
- },
- sound:()=>{S.sound=!S.sound;save();render(true)},
- reset:()=>{if(confirm('確定要清掉所有進度嗎？')){try{localStorage.removeItem(KEY)}catch(e){}S={xp:0,feathers:{},heard:0,rounds:0,perfect:0,bestCombo:0,stars:{},read:{},transDone:0,badges:{},quest:null,allQuest:0,sound:true};save();render()}}
+  home:()=>{screen='home';render()},
+  go:d=>{screen=d.s;if(d.s==='quiz'){buildQuiz()}if(d.s==='cards'){deck={i:0,flip:false}}render();
+    if(d.s==='cards')say(scoped()[0].en,.9);if(d.s==='quiz')setTimeout(()=>say(quiz.words[0].en,.9),300)},
+  scope:d=>{scope=d.u==='all'?'all':+d.u;deck={i:0,flip:false};render();say(scoped()[0].en,.9)},
+  flip:()=>{deck.flip=!deck.flip;const f=$('.flip');if(f)f.classList.toggle('on',deck.flip);if(deck.flip){SFX.pop();const w=scoped()[deck.i]}},
+  nav:d=>{const L=scoped();deck.i=(deck.i+ +d.d + L.length)%L.length;deck.flip=false;render();say(scoped()[deck.i].en,.9)},
+  say:d=>say(d.t,+d.r||.9),
+  know:(d,el)=>{const en=d.en;if(S.known[en]){toast('這個字已經記住囉 💗')}else{S.known[en]=1;save();head();heartsFromEl(el,7);SFX.yay();toast('收進小愛心 💗')}render();},
+  pick:d=>pickOpt(+d.i),
+  qnext:qNext,
+  sound:()=>{S.sound=!S.sound;save();render();if(S.sound)SFX.pop()}
 };
 document.addEventListener('click',e=>{
-  const t=e.target.closest('[data-a]');if(!t||t.disabled)return;
-  const f=A[t.dataset.a];if(f)f(t.dataset,t,e);
+  const m=e.target.closest('[data-a]');if(!m||m.disabled)return;
+  const f=A[m.dataset.a];if(f)f(m.dataset,m,e);
+});
+/* tap the mascot for a little hello */
+document.addEventListener('click',e=>{
+  const s=e.target.closest('.mascot');if(!s)return;
+  s.classList.remove('wig');void s.offsetWidth;s.classList.add('wig');SFX.pop();
+  heartsFromEl(s,4);
 });
 
-/* 背景羽毛 */
-(function(){
-  const box=$('#fallers');
-  for(let i=0;i<10;i++){
-    const d=document.createElement('div');d.className='fall';
-    const sz=8+Math.random()*26;
-    d.style.width=d.style.height=sz+'px';d.style.left=(3+i*9.5+Math.random()*5)+'%';
-    d.style.animationDuration=(14+Math.random()*14)+'s';d.style.animationDelay=(-Math.random()*22)+'s';
-    box.appendChild(d);
-  }
-})();
+/* ---- bubbles ---- */
+(function(){const box=$('#sky');for(let i=0;i<12;i++){const d=document.createElement('div');d.className='b';
+  const sz=12+Math.random()*36;d.style.width=sz+'px';d.style.height=sz+'px';d.style.left=(3+Math.random()*94)+'%';
+  d.style.animationDuration=(16+Math.random()*16)+'s';d.style.animationDelay=(-Math.random()*28)+'s';box.appendChild(d)}})();
 
-Qs();render();
+render();
 </script>
 </body>
 </html>
