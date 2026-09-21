@@ -217,6 +217,35 @@ main{flex:1;min-height:0}
 
 .footer{text-align:center;color:var(--sub);font-size:12.5px;margin-top:8px}
 .footer button{color:var(--sub);text-decoration:underline;font-size:12.5px}
+
+/* reading */
+.big.read .ic{background:linear-gradient(150deg,#fff0d6,#ffe4ac)}
+.ptitle{font-size:22px;font-weight:700;color:var(--head);line-height:1.2}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-size:13px;color:var(--sub)}
+.lg{display:inline-block;border-radius:8px;padding:1px 9px;font-weight:700}
+.lg.wd{background:#ffe0ec;color:#c85f88}
+.lg.ph{background:#daf3f3;color:#3f8f92}
+.para{font-size:17px;line-height:1.95;color:var(--ink)}
+.tok{cursor:pointer;border-radius:7px;padding:0 3px;font-weight:700;color:#5b4e66;transition:background .15s}
+.tok.wd{background:#ffe6ef;box-shadow:inset 0 -3px 0 #ffb9d3}
+.tok.ph{background:#dff3f3;box-shadow:inset 0 -3px 0 #9adadf}
+.tok:active{background:#ffd6a8}
+.pact{display:flex;gap:10px;margin-top:14px}
+.zhp{display:none;margin-top:12px;background:var(--rose-soft);border-radius:16px;padding:11px 15px;font-size:15px;line-height:1.85;color:var(--ink)}
+.zhp.show{display:block}
+
+/* term sheet */
+#backdrop{position:fixed;inset:0;background:rgba(80,60,90,.35);opacity:0;pointer-events:none;transition:opacity .25s;z-index:60}
+#backdrop.on{opacity:1;pointer-events:auto}
+#sheet{position:fixed;left:0;right:0;bottom:0;z-index:61;max-width:440px;margin:0 auto;
+  background:var(--card);border-radius:28px 28px 0 0;box-shadow:0 -12px 40px var(--sh-pink);
+  padding:14px 20px calc(20px + env(safe-area-inset-bottom,0px));max-height:76%;overflow:auto;
+  transform:translateY(106%);transition:transform .34s cubic-bezier(.3,1.2,.5,1)}
+#sheet.on{transform:translateY(0)}
+.handle{width:44px;height:6px;border-radius:4px;background:var(--line);margin:0 auto 12px}
+.sh-en{font-size:26px;font-weight:700;color:var(--head);line-height:1.1}
+.sh-zh{font-size:19px;font-weight:700;color:var(--head);font-family:"Huninn",sans-serif;margin:8px 0}
+.sh-tip{background:var(--aqua-soft);border-radius:14px;padding:9px 13px;font-size:14px;color:var(--ink);line-height:1.6}
 </style>
 </head>
 <body>
@@ -231,11 +260,18 @@ main{flex:1;min-height:0}
   <main id="main"></main>
   <div class="footer" id="foot"></div>
 </div>
+<div id="backdrop" data-a="closesheet"></div>
+<div id="sheet"></div>
 <div id="hearts"></div>
 <div id="toast"></div>
 
 <script>
-const WORDS=[{"u":8,"en":"coincidence","pos":"n.","zh":"巧合；碰巧的事","ex":"It was a happy {coincidence} that we chose the same cafe.","exzh":"我們挑了同一家咖啡店，真是個愉快的巧合。"},{"u":8,"en":"invade","pos":"v.","zh":"入侵、侵略；侵犯","ex":"The army planned to {invade} the island at dawn.","exzh":"軍隊計畫在黎明入侵這座島。"},{"u":8,"en":"overthrow","pos":"v.","zh":"（尤指以武力）推翻、打倒","ex":"The rebels hoped to {overthrow} the cruel king.","exzh":"反抗軍希望推翻殘暴的國王。"},{"u":8,"en":"rigid","pos":"adj.","zh":"僵化的、不易改變的；死板的","ex":"Her {rigid} schedule leaves no room for surprises.","exzh":"她死板的行程表容不下任何驚喜。"},{"u":8,"en":"labor","pos":"v.","zh":"勞動；辛苦工作（laboring 作形容詞：勞動的）","ex":"Farmers {labor} in the fields from sunrise to sunset.","exzh":"農夫從日出到日落都在田裡辛勤工作。"},{"u":8,"en":"peasant","pos":"n.","zh":"（尤指舊時的）農民、佃農","ex":"A poor {peasant} gave part of his crops to the lord.","exzh":"一位窮苦的農民把部分收成交給領主。"},{"u":8,"en":"noble","pos":"n.","zh":"貴族；品德高尚的人","ex":"The {noble} lived in a castle and owned a lot of land.","exzh":"那位貴族住在城堡裡，擁有大片土地。"},{"u":8,"en":"encounter","pos":"v.","zh":"（偶然）遇到；遭遇","ex":"You might {encounter} a deer on this quiet trail.","exzh":"你可能會在這條安靜的小徑上遇到一隻鹿。"},{"u":8,"en":"feast","pos":"n.","zh":"盛宴、宴會","ex":"The village held a {feast} to celebrate the harvest.","exzh":"村民舉辦盛宴慶祝豐收。"},{"u":8,"en":"merge","pos":"v.","zh":"合併、融合、結合","ex":"Two small streams {merge} and become one river.","exzh":"兩條小溪匯合成一條河。"},{"u":8,"en":"distinct","pos":"adj.","zh":"有所區分的、截然不同的；顯著的","ex":"The twins look alike, but their personalities are quite {distinct}.","exzh":"雙胞胎長得很像，但個性截然不同。"},{"u":8,"en":"endure","pos":"v.","zh":"持續存在、持久；忍受、忍耐","ex":"Some folk songs {endure} for hundreds of years.","exzh":"有些民謠流傳了數百年。"},{"u":8,"en":"reminder","pos":"n.","zh":"提醒物；提醒的人或事；提示","ex":"This old photo is a sweet {reminder} of our trip.","exzh":"這張舊照片甜蜜地提醒著我們那趟旅行。"},{"u":8,"en":"linguistic","pos":"adj.","zh":"語言的；語言學的","ex":"She took a {linguistic} course on how languages change.","exzh":"她修了一門關於語言如何演變的語言學課。"},{"u":8,"en":"outlier","pos":"n.","zh":"異類；特例；與眾不同的人或事物","ex":"In our class his score was an {outlier}, far above everyone else.","exzh":"在班上，他的成績是個特例，遠高於其他人。"},{"u":8,"en":"diner","pos":"n.","zh":"用餐者、食客；小餐館、美式餐館","ex":"The {diner} asked the waiter for the menu.","exzh":"食客向服務生要了菜單。"},{"u":8,"en":"conquest","pos":"n.","zh":"征服、占領；攻克","ex":"The {conquest} of the castle took three long months.","exzh":"攻下那座城堡花了整整三個月。"},{"u":8,"en":"lavish","pos":"adj.","zh":"奢華的、豪華的；過於豐盛的","ex":"They held a {lavish} wedding with a hundred dishes.","exzh":"他們辦了一場有上百道菜的豪華婚禮。"},{"u":8,"en":"conversely","pos":"adv.","zh":"相反地；反之","ex":"Some people love cities; {conversely}, others prefer quiet villages.","exzh":"有些人愛城市；反之，有些人偏好安靜的村莊。"},{"u":8,"en":"duality","pos":"n.","zh":"雙重性、二元性","ex":"The story explores the {duality} of good and evil.","exzh":"這個故事探討善與惡的二元性。"},{"u":8,"en":"medieval","pos":"adj.","zh":"中世紀的","ex":"Knights and kings lived in {medieval} Europe, long before modern times.","exzh":"騎士和國王生活在中世紀的歐洲，遠在現代之前。"},{"u":9,"en":"presentation","pos":"n.","zh":"報告、簡報；授予；呈現","ex":"She practiced her {presentation} in front of the mirror.","exzh":"她對著鏡子練習簡報。"},{"u":9,"en":"boost","pos":"v.","zh":"提升、增加；推動、促進（mood-boosting＝提振心情的）","ex":"A short walk can {boost} your mood.","exzh":"短短散個步就能提振心情。"},{"u":9,"en":"accomplish","pos":"v.","zh":"完成；達成、實現","ex":"With teamwork, we can {accomplish} more.","exzh":"只要團隊合作，我們能完成更多事。"},{"u":9,"en":"purchase","pos":"n./v.","zh":"購買之物、購買行為；購買、採購","ex":"Keep the receipt for every {purchase}.","exzh":"每一筆購買都要保留收據。"},{"u":9,"en":"trigger","pos":"v.","zh":"引發、觸發；（名詞）誘因、扳機","ex":"Loud noises can {trigger} a headache.","exzh":"很大的噪音可能引發頭痛。"},{"u":9,"en":"psychology","pos":"n.","zh":"心理學","ex":"She studies {psychology} to understand why people act the way they do.","exzh":"她研讀心理學，想了解人為什麼會那樣行動。"},{"u":9,"en":"stability","pos":"n.","zh":"穩定（性）；穩固","ex":"A regular sleep schedule brings {stability} to your day.","exzh":"規律的睡眠讓你的一天更穩定。"},{"u":9,"en":"participant","pos":"n.","zh":"參加者、參與者","ex":"Every {participant} received a small gift.","exzh":"每位參加者都收到一份小禮物。"},{"u":9,"en":"implication","pos":"n.","zh":"可能的影響、後果（常用複數）；含意、暗示","ex":"What is the {implication} of this new rule?","exzh":"這條新規定會帶來什麼影響？"},{"u":9,"en":"motivation","pos":"n.","zh":"動機、動力；積極性","ex":"Prizes and praise can raise a student's {motivation} to study.","exzh":"獎品和稱讚能提高學生的學習動力。"},{"u":9,"en":"polished","pos":"adj.","zh":"優雅的；得體的；精緻熟練的","ex":"Her {polished} speech impressed the judges.","exzh":"她精緻熟練的演說讓評審印象深刻。"},{"u":9,"en":"outfit","pos":"n.","zh":"全套服裝；穿搭","ex":"I picked a bright {outfit} for the party.","exzh":"我為派對挑了一套亮眼的穿搭。"},{"u":9,"en":"reinforce","pos":"v.","zh":"強化、加強；鞏固","ex":"Daily practice will {reinforce} what you learned in class.","exzh":"每天練習會鞏固你在課堂上學到的東西。"},{"u":9,"en":"accessible","pos":"adj.","zh":"可取得的、可使用的；易接近的","ex":"The library is {accessible} by bus and by bike.","exzh":"搭公車或騎腳踏車都到得了圖書館。"},{"u":9,"en":"wardrobe","pos":"n.","zh":"衣櫥、衣櫃；全部服裝","ex":"My {wardrobe} is full of blue shirts.","exzh":"我的衣櫥裡全是藍色襯衫。"},{"u":9,"en":"pandemic","pos":"n.","zh":"（疾病）大流行；流行病","ex":"Schools moved online during the {pandemic}.","exzh":"疫情期間，學校改成線上上課。"},{"u":9,"en":"hue","pos":"n.","zh":"顏色；色調","ex":"The sky turned a warm pink {hue} at sunset.","exzh":"日落時天空染上暖粉色調。"},{"u":9,"en":"mindset","pos":"n.","zh":"心態；思維方式","ex":"A growth {mindset} means seeing mistakes as chances to learn.","exzh":"成長型心態就是把錯誤看成學習的機會。"},{"u":9,"en":"precision","pos":"n.","zh":"精確性；精密度","ex":"The surgeon cut with great {precision}, never missing a millimeter.","exzh":"外科醫生以極高的精準度下刀，連一公釐都不偏。"},{"u":9,"en":"sharpen","pos":"v.","zh":"使更銳利、更敏銳；提升、改善（能力、思考）","ex":"Please {sharpen} your pencil before the test.","exzh":"考試前請把鉛筆削尖。"}];
+const WORDS=[{"u":8,"en":"coincidence","pos":"n.","zh":"巧合；碰巧的事","tip":"co-（一起）＋ incid（落下）→ 剛好一起落在同一點","ex":"It was a happy {coincidence} that we chose the same cafe.","exzh":"我們挑了同一家咖啡店，真是個愉快的巧合。"},{"u":8,"en":"invade","pos":"v.","zh":"入侵、侵略；侵犯","tip":"in-（進入）＋ vade（走）→ 走進別人的地盤","ex":"The army planned to {invade} the island at dawn.","exzh":"軍隊計畫在黎明入侵這座島。"},{"u":8,"en":"overthrow","pos":"v.","zh":"（尤指以武力）推翻、打倒","tip":"over（翻過去）＋ throw（丟）→ 把統治者翻倒。三態：overthrow–overthrew–overthrown","ex":"The rebels hoped to {overthrow} the cruel king.","exzh":"反抗軍希望推翻殘暴的國王。"},{"u":8,"en":"rigid","pos":"adj.","zh":"僵化的、不易改變的；死板的","tip":"想像一根硬梆梆、完全不會彎的尺","ex":"Her {rigid} schedule leaves no room for surprises.","exzh":"她死板的行程表容不下任何驚喜。"},{"u":8,"en":"labor","pos":"v.","zh":"勞動；辛苦工作（laboring 作形容詞：勞動的）","tip":"名詞 labor 是「勞動、勞工」，Labor Day 就是勞動節","ex":"Farmers {labor} in the fields from sunrise to sunset.","exzh":"農夫從日出到日落都在田裡辛勤工作。"},{"u":8,"en":"peasant","pos":"n.","zh":"（尤指舊時的）農民、佃農","tip":"集合名詞是 peasantry（農民階級）","ex":"A poor {peasant} gave part of his crops to the lord.","exzh":"一位窮苦的農民把部分收成交給領主。"},{"u":8,"en":"noble","pos":"n.","zh":"貴族；品德高尚的人","tip":"aristocracy 是「貴族階級、貴族統治階層」","ex":"The {noble} lived in a castle and owned a lot of land.","exzh":"那位貴族住在城堡裡，擁有大片土地。"},{"u":8,"en":"encounter","pos":"v.","zh":"（偶然）遇到；遭遇","tip":"en-（在…裡）＋ counter（相對）→ 迎面撞見","ex":"You might {encounter} a deer on this quiet trail.","exzh":"你可能會在這條安靜的小徑上遇到一隻鹿。"},{"u":8,"en":"feast","pos":"n.","zh":"盛宴、宴會","tip":"feast 和 fest（節慶）有親戚關係","ex":"The village held a {feast} to celebrate the harvest.","exzh":"村民舉辦盛宴慶祝豐收。"},{"u":8,"en":"merge","pos":"v.","zh":"合併、融合、結合","tip":"兩條河匯流成一條，就是 merge","ex":"Two small streams {merge} and become one river.","exzh":"兩條小溪匯合成一條河。"},{"u":8,"en":"distinct","pos":"adj.","zh":"有所區分的、截然不同的；顯著的","tip":"dis-（分開）＋ stinct（刺、戳）→ 被清楚分隔開的","ex":"The twins look alike, but their personalities are quite {distinct}.","exzh":"雙胞胎長得很像，但個性截然不同。"},{"u":8,"en":"endure","pos":"v.","zh":"持續存在、持久；忍受、忍耐","tip":"en-（使）＋ dur（硬、持久）→ 撐得久。dur 也在 during、duration","ex":"Some folk songs {endure} for hundreds of years.","exzh":"有些民謠流傳了數百年。"},{"u":8,"en":"reminder","pos":"n.","zh":"提醒物；提醒的人或事；提示","tip":"re-（再）＋ mind（記得）＋ -er → 讓你再想起的東西","ex":"This old photo is a sweet {reminder} of our trip.","exzh":"這張舊照片甜蜜地提醒著我們那趟旅行。"},{"u":8,"en":"linguistic","pos":"adj.","zh":"語言的；語言學的","tip":"lingu（舌頭、語言）→ 和 language 同源","ex":"She took a {linguistic} course on how languages change.","exzh":"她修了一門關於語言如何演變的語言學課。"},{"u":8,"en":"outlier","pos":"n.","zh":"異類；特例；與眾不同的人或事物","tip":"out（外面）＋ lie（位在）＋ -er → 站在圈外的那一個","ex":"In our class his score was an {outlier}, far above everyone else.","exzh":"在班上，他的成績是個特例，遠高於其他人。"},{"u":8,"en":"diner","pos":"n.","zh":"用餐者、食客；小餐館、美式餐館","tip":"dine（用餐）＋ -er → 用餐的人","ex":"The {diner} asked the waiter for the menu.","exzh":"食客向服務生要了菜單。"},{"u":8,"en":"conquest","pos":"n.","zh":"征服、占領；攻克","tip":"con-（完全）＋ quest（尋求）→ 一路追到手","ex":"The {conquest} of the castle took three long months.","exzh":"攻下那座城堡花了整整三個月。"},{"u":8,"en":"lavish","pos":"adj.","zh":"奢華的、豪華的；過於豐盛的","tip":"形容派對、宴會、禮物都很常見","ex":"They held a {lavish} wedding with a hundred dishes.","exzh":"他們辦了一場有上百道菜的豪華婚禮。"},{"u":8,"en":"conversely","pos":"adv.","zh":"相反地；反之","tip":"con-（一起）＋ vers（轉）→ 轉個方向來看","ex":"Some people love cities; {conversely}, others prefer quiet villages.","exzh":"有些人愛城市；反之，有些人偏好安靜的村莊。"},{"u":8,"en":"duality","pos":"n.","zh":"雙重性、二元性","tip":"du-（二）＋ -ity → 兩面性（dual、duo 同源）","ex":"The story explores the {duality} of good and evil.","exzh":"這個故事探討善與惡的二元性。"},{"u":8,"en":"medieval","pos":"adj.","zh":"中世紀的","tip":"medi（中間）＋ ev（時代）→ 「中間的時代」","ex":"Knights and kings lived in {medieval} Europe, long before modern times.","exzh":"騎士和國王生活在中世紀的歐洲，遠在現代之前。"},{"u":9,"en":"presentation","pos":"n.","zh":"報告、簡報；授予；呈現","tip":"pre-（前）＋ sent（在場）→ 站到大家面前呈現","ex":"She practiced her {presentation} in front of the mirror.","exzh":"她對著鏡子練習簡報。"},{"u":9,"en":"boost","pos":"v.","zh":"提升、增加；推動、促進（mood-boosting＝提振心情的）","tip":"boost 就像幫它「推一把」","ex":"A short walk can {boost} your mood.","exzh":"短短散個步就能提振心情。"},{"u":9,"en":"accomplish","pos":"v.","zh":"完成；達成、實現","tip":"ac-（去）＋ com-（完全）＋ plish（填滿）→ 把它做到圓滿","ex":"With teamwork, we can {accomplish} more.","exzh":"只要團隊合作，我們能完成更多事。"},{"u":9,"en":"purchase","pos":"n./v.","zh":"購買之物、購買行為；購買、採購","tip":"pur-（向前）＋ chase（追）→ 追到手買下來","ex":"Keep the receipt for every {purchase}.","exzh":"每一筆購買都要保留收據。"},{"u":9,"en":"trigger","pos":"v.","zh":"引發、觸發；（名詞）誘因、扳機","tip":"扣下扳機 → 引發一連串反應","ex":"Loud noises can {trigger} a headache.","exzh":"很大的噪音可能引發頭痛。"},{"u":9,"en":"psychology","pos":"n.","zh":"心理學","tip":"psycho（心靈）＋ -logy（…學）。形容詞 psychological、人 psychologist","ex":"She studies {psychology} to understand why people act the way they do.","exzh":"她研讀心理學，想了解人為什麼會那樣行動。"},{"u":9,"en":"stability","pos":"n.","zh":"穩定（性）；穩固","tip":"stab ＝ stand（站立）→ 站得穩。形容詞 stable、動詞 stabilize","ex":"A regular sleep schedule brings {stability} to your day.","exzh":"規律的睡眠讓你的一天更穩定。"},{"u":9,"en":"participant","pos":"n.","zh":"參加者、參與者","tip":"part（部分）＋ cip（拿取）＋ -ant（…的人）→ 拿走一份參與的人","ex":"Every {participant} received a small gift.","exzh":"每位參加者都收到一份小禮物。"},{"u":9,"en":"implication","pos":"n.","zh":"可能的影響、後果（常用複數）；含意、暗示","tip":"im-（進入）＋ plic（折疊）→ 折在裡面的意思","ex":"What is the {implication} of this new rule?","exzh":"這條新規定會帶來什麼影響？"},{"u":9,"en":"motivation","pos":"n.","zh":"動機、動力；積極性","tip":"mot（移動）→ 讓人動起來的力量。動詞 motivate","ex":"Prizes and praise can raise a student's {motivation} to study.","exzh":"獎品和稱讚能提高學生的學習動力。"},{"u":9,"en":"polished","pos":"adj.","zh":"優雅的；得體的；精緻熟練的","tip":"polish（擦亮）＋ -ed → 被擦得亮晶晶的","ex":"Her {polished} speech impressed the judges.","exzh":"她精緻熟練的演說讓評審印象深刻。"},{"u":9,"en":"outfit","pos":"n.","zh":"全套服裝；穿搭","tip":"out（外）＋ fit（裝備）→ 出門的整套裝備","ex":"I picked a bright {outfit} for the party.","exzh":"我為派對挑了一套亮眼的穿搭。"},{"u":9,"en":"reinforce","pos":"v.","zh":"強化、加強；鞏固","tip":"re-（再）＋ in ＋ force（力量）→ 再灌注力量","ex":"Daily practice will {reinforce} what you learned in class.","exzh":"每天練習會鞏固你在課堂上學到的東西。"},{"u":9,"en":"accessible","pos":"adj.","zh":"可取得的、可使用的；易接近的","tip":"ac-（去）＋ cess（走）＋ -ible（可…的）→ 走得到的。動詞 access","ex":"The library is {accessible} by bus and by bike.","exzh":"搭公車或騎腳踏車都到得了圖書館。"},{"u":9,"en":"wardrobe","pos":"n.","zh":"衣櫥、衣櫃；全部服裝","tip":"ward（看守）＋ robe（袍子）→ 看守衣服的地方","ex":"My {wardrobe} is full of blue shirts.","exzh":"我的衣櫥裡全是藍色襯衫。"},{"u":9,"en":"pandemic","pos":"n.","zh":"（疾病）大流行；流行病","tip":"pan-（全）＋ dem（人民）→ 影響全民的流行病","ex":"Schools moved online during the {pandemic}.","exzh":"疫情期間，學校改成線上上課。"},{"u":9,"en":"hue","pos":"n.","zh":"顏色；色調","tip":"和 color 幾乎同義，但更常指「色調」","ex":"The sky turned a warm pink {hue} at sunset.","exzh":"日落時天空染上暖粉色調。"},{"u":9,"en":"mindset","pos":"n.","zh":"心態；思維方式","tip":"mind（心）＋ set（設定）→ 心的設定","ex":"A growth {mindset} means seeing mistakes as chances to learn.","exzh":"成長型心態就是把錯誤看成學習的機會。"},{"u":9,"en":"precision","pos":"n.","zh":"精確性；精密度","tip":"pre-（事先）＋ cis（切）→ 事先切得整整齊齊 → 精確","ex":"The surgeon cut with great {precision}, never missing a millimeter.","exzh":"外科醫生以極高的精準度下刀，連一公釐都不偏。"},{"u":9,"en":"sharpen","pos":"v.","zh":"使更銳利、更敏銳；提升、改善（能力、思考）","tip":"sharp（銳利）＋ -en（使變成）→ 使變銳利","ex":"Please {sharpen} your pencil before the test.","exzh":"考試前請把鉛筆削尖。"}];
+const PH={"p_tend":{"en":"tend to","pos":"片語","zh":"tend to N. 照料、照顧（＝take care of / care for）；tend to V. 往往…、傾向於…","tip":"看 to 後面接什麼：名詞 → 照顧；動詞 → 傾向","exs":[["Nurses tend to the patients all night.","護理師整晚照顧病患。"],["People tend to feel sleepy after lunch.","人們吃完午餐後往往會想睡。"]]},"p_reduce":{"en":"reduce sb/sth to N./V-ing","say":"reduce to","pos":"片語","zh":"使某人或某事物淪為…、變成…（常用被動 be reduced to）","tip":"通常帶有負面、不幸的意味","exs":[["After the flood, the town was reduced to mud and broken boards.","洪水過後，小鎮淪為一片泥濘和碎木板。"],["Tired and hungry, the hikers were reduced to sharing one apple.","又累又餓的登山客被迫分食一顆蘋果。"]]},"p_strip":{"en":"strip sb of sth","pos":"片語","zh":"剝奪某人的…","tip":"常搭配 power（權力）、citizenship（公民身分）、dignity（尊嚴）","exs":[["The judge stripped the company of its license.","法官剝奪了那家公司的執照。"],["The mayor was stripped of his title after the scandal.","醜聞之後，市長被剝奪了頭銜。"]]},"p_whenever":{"en":"whenever + S + V","say":"whenever","pos":"句型","zh":"每當、每次…（＝every time / each time）；也可表「無論何時」（＝no matter when）","tip":"引導時間副詞子句","exs":[["Whenever the wind blows, the old door creaks.","每當風一吹，那扇舊門就吱吱作響。"],["Whenever you are ready, just call me.","無論你何時準備好，打給我就行。"]]},"p_response":{"en":"in response to N./V-ing","say":"in response to","pos":"片語","zh":"作為對…的回應；為了因應…","tip":"＝in answer to / in reply to，但用途更廣","exs":[["The shop added more chairs in response to growing crowds.","為了因應越來越多的人潮，店家增加了座位。"]]},"p_simply":{"en":"simply put","pos":"片語","zh":"簡言之、簡單來說","tip":"也可以寫成 put simply","exs":[["Simply put, this app saves you time.","簡單來說，這個 app 幫你省時間。"]]},"p_associate":{"en":"associate A with B","say":"associate with","pos":"片語","zh":"把 A 和 B 聯想在一起；常用被動 A be associated with B（A 與 B 有關）","tip":"同義：connect / link / relate A with (to) B","exs":[["Many people associate the color red with energy.","許多人把紅色和活力聯想在一起。"],["Poor sleep is often associated with bad moods.","睡眠不足常和壞心情有關。"]]},"p_athand":{"en":"at hand","pos":"片語","zh":"手邊的；眼前的；即將到來的","tip":"the task at hand ＝ 眼前要做的事","exs":[["Let us finish the task at hand first.","我們先把眼前的工作做完。"]]},"p_turnout":{"en":"turn out","pos":"片語","zh":"結果是…；原來是…（事情最後的結果，或發現與預期不同）","tip":"It turns out that S+V；turn out (to be) N./adj.","exs":[["It turned out that the shy new student was a great singer.","結果發現，那位害羞的新同學是個很棒的歌手。"],["The rumor turned out to be false.","那個傳言結果是假的。"]]}};
+const PASS={"8":{"title":"Beef Versus Cow","zh":"餐盤裡的英語歷史","note":"小烏鴉用自己的話改寫的課文重點版","paras":[{"en":"Here is a puzzle. In many languages, one word names both the animal and its meat. English is an unusual [[outlier|outlier]]. Farm workers [[tend to|p_tend]] cows and pigs all day, yet once those animals reach a [[diner|diner]]'s plate, they get new names: beef and pork. This is no [[coincidence|coincidence]]. It comes from a [[conquest|conquest]] that took place almost a thousand years ago.","zh":"來個小謎題：在許多語言裡，同一個字既指動物、也指牠的肉。英語卻是個不尋常的特例。農場工人整天照顧牛和豬，但這些動物一到食客的盤子裡，就有了新名字：beef 和 pork。這不是巧合，而是近一千年前一場征服所留下的痕跡。"},{"en":"In 1066, William, Duke of Normandy, sailed across the sea. His soldiers [[invaded|invade]] England and [[overthrew|overthrow]] the king. The new rulers built a [[rigid|rigid]] class system, with French-speaking [[nobles|noble]] at the top. Many local English people [[were reduced to|p_reduce]] poor farm workers, [[stripped of|p_strip]] their land and their power. They had to [[labor|labor]] in the fields as [[peasants|peasant]].","zh":"1066 年，諾曼第公爵威廉渡海而來。他的軍隊入侵英格蘭，推翻了國王。新統治者建立了僵化的階級制度，說法語的貴族站在最上層。許多當地英格蘭人淪為貧窮的農工，土地和權力都被剝奪，只能在田裡辛苦勞動，成為農民。"},{"en":"For about three hundred years, two languages lived side by side. The peasants kept using English words for the animals they raised: cow, pig, sheep. But the meat rarely reached their own tables.","zh":"在接下來大約三百年裡，兩種語言並存。農民繼續用英語稱呼自己飼養的動物：cow、pig、sheep。但這些肉很少出現在他們自己的餐桌上。"},{"en":"Meanwhile, the nobles spoke French. They seldom [[encountered|encounter]] a living cow. What reached them were finished dishes at [[lavish|lavish]] [[feasts|feast]]. So they used French-based words: boeuf, porc and mouton. Over time, these became beef, pork and mutton.","zh":"同時，貴族說的是法語。他們很少遇到活生生的牛，送到他們面前的只有奢華盛宴上的成品料理。所以他們用法語系的說法：boeuf、porc、mouton。久而久之，這些字變成了 beef、pork 和 mutton。"},{"en":"Later, the two groups began to [[merge|merge]] into one people. Both sets of words stayed, but each kept a [[distinct|distinct]] job: animal names for the farm, meat names for the table. Veal and venison follow the same rule. [[Conversely|conversely]], chicken and fish were food for everybody, so one name serves both the animal and the meal.","zh":"後來，兩個群體逐漸融合成同一個民族。兩套詞彙都留了下來，但各司其職：農場用動物名，餐桌用肉的名稱。小牛肉 veal 和鹿肉 venison 也是同樣的規則。相反地，雞和魚是人人都吃的食物，所以動物和料理共用同一個名稱。"},{"en":"This [[duality|duality]] still [[endures|endure]]. Every menu is a small [[reminder|reminder]] of [[medieval|medieval]] England. [[Whenever|p_whenever]] you read one, remember that the [[linguistic|linguistic]] traces of history are hiding on your plate.","zh":"這種雙重性至今仍然存在。每一份菜單都是中世紀英格蘭的小小提醒。每當你讀菜單時，請記得：歷史的語言痕跡就藏在你的餐盤上。"}]},"9":{"title":"Dress to De-Stress","zh":"穿出好心情、甩掉壓力","note":"小烏鴉用自己的話改寫的課文重點版","paras":[{"en":"Tomorrow is your big [[presentation|presentation]]. You open your [[wardrobe|wardrobe]], and every choice feels wrong. The colors look dull, and the style does not match your mood. What you may need is some dopamine dressing: picking clothes because they lift your spirits. The idea became popular during the [[pandemic|pandemic]].","zh":"明天就要上台簡報了。你打開衣櫥，卻覺得每一件都不對勁：顏色悶悶的，款式也跟心情不搭。這時你可能需要一點「多巴胺穿搭」：挑選讓自己心情變好的衣服。這個概念在疫情期間開始流行。"},{"en":"Dopamine is a brain chemical linked to happiness. It shows up when you [[accomplish|accomplish]] something hard or enjoy a tasty treat. Clothes you love, whether a new [[purchase|purchase]] or an old favorite, can [[trigger|trigger]] the same feeling and [[boost|boost]] your mood.","zh":"多巴胺是一種和快樂有關的腦內化學物質。當你完成困難的事，或享用美味點心時，它就會出現。你喜愛的衣服，不論是新買的還是穿慣的老朋友，也能引發同樣的感覺，讓心情變好。"},{"en":"Color matters too. In color [[psychology|psychology]], every [[hue|hue]] is tied to a feeling. Blue is often calm. Brown suggests [[stability|stability]]. Red can raise your heart rate, and green is linked to creativity.","zh":"顏色也很重要。在色彩心理學裡，每一種色調都連結著一種感受。藍色常帶來平靜，棕色暗示穩定，紅色能讓心跳加快，綠色則和創造力有關。"},{"en":"Another idea is called enclothed cognition: what you wear can change your [[mindset|mindset]]. [[Simply put|p_simply]], clothes carry meanings, and those meanings shape how we act. In one famous experiment, [[participants|participant]] in white lab coats paid better attention. They [[associated|p_associate]] the coats with [[precision|precision]], and that link seemed to [[sharpen|sharpen]] their thinking.","zh":"另一個概念叫「穿著認知」：你穿什麼，會改變你的思維方式。簡單來說，衣服帶有意義，而這些意義會影響我們的行為。在一項著名的實驗中，穿白色實驗袍的參與者更能集中注意力。他們把實驗袍和精確聯想在一起，這個連結似乎讓他們的思考變得更敏銳。"},{"en":"What are the [[implications|implication]]? Cozy clothes feel nice, but they may not build [[motivation|motivation]]. Dress for the task [[at hand|p_athand]]. A [[polished|polished]] [[outfit|outfit]] can make an interview feel easier, and colors you link with calm will [[reinforce|reinforce]] that calm. [[In response to|p_response]] stress, your closet is an [[accessible|accessible]] tool. It [[turns out|p_turnout]] that a closet can be a little mood toolbox.","zh":"這有什麼實際影響？舒適的衣服雖然舒服，卻不一定能帶來動力。請為眼前的任務而穿。一套得體的穿搭能讓面試更輕鬆，而你與平靜聯想在一起的顏色，會強化那份平靜。面對壓力時，衣櫥是一個隨手可得的工具。結果發現，衣櫥其實是個小小的情緒工具箱。"}]}};
+const WD=Object.fromEntries(WORDS.map(w=>[w.en,w]));
+const tokHTML=t=>t.replace(/\[\[(.+?)\|(.+?)\]\]/g,(m,txt,id)=>`<span class="tok ${id.startsWith('p_')?'ph':'wd'}" data-a="term" data-id="${id}">${esc(txt)}</span>`);
+const stripTok=t=>t.replace(/\[\[(.+?)\|.+?\]\]/g,'$1');
 const short=z=>z.replace(/^（.*?）/,'').split('；')[0].split('、')[0].replace(/（.*?）/,'').trim();
 const $=s=>document.querySelector(s);
 const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=(Math.random()*(i+1))|0;[a[i],a[j]]=[a[j],a[i]]}return a};
@@ -251,7 +287,7 @@ try{const j=JSON.parse(localStorage.getItem(KEY));if(j)S=Object.assign(S,j)}catc
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
 const heartN=()=>Object.keys(S.known).length;
 
-let screen='home', scope='all', deck={i:0,flip:false}, quiz=null;
+let screen='home', scope='all', deck={i:0,flip:false}, quiz=null, readU=8;
 
 /* ---- mascot: a soft cloud-bun ---- */
 function mascot(cls=''){return `<svg class="mascot ${cls}" viewBox="0 0 120 120" aria-hidden="true">
@@ -308,7 +344,7 @@ const scoped=()=>scope==='all'?WORDS:WORDS.filter(w=>w.u===+scope);
 function head(){$('#mini').innerHTML=mascot('bob');$('#hc').textContent=heartN();}
 function render(){
   head();
-  const map={home:rHome,cards:rCards,quiz:rQuiz,done:rDone};
+  const map={home:rHome,cards:rCards,read:rRead,quiz:rQuiz,done:rDone};
   $('#main').innerHTML=map[screen]();
   $('#foot').innerHTML = screen==='home'
     ? `一次一點點就好，柔柔加油 🌷　·　<button data-a="sound">${S.sound?'🔔 聲音開':'🔕 聲音關'}</button>`
@@ -325,6 +361,8 @@ function rHome(){
       <p>${greets[(Math.random()*greets.length)|0]}</p></div>
     <button class="big cards" data-a="go" data-s="cards"><div class="ic">🃏</div>
       <div class="grow"><b>單字卡</b><span>翻翻卡片、聽發音，記住新單字</span></div><div class="go">›</div></button>
+    <button class="big read" data-a="go" data-s="read"><div class="ic">📖</div>
+      <div class="grow"><b>課文</b><span>一句一句讀，點單字看意思</span></div><div class="go">›</div></button>
     <button class="big play" data-a="go" data-s="quiz"><div class="ic">🎮</div>
       <div class="grow"><b>小練習</b><span>看單字、選中文，輕鬆玩一輪</span></div><div class="go">›</div></button>`;
 }
@@ -424,18 +462,59 @@ function rDone(){
   </div>`;
 }
 
+function rRead(){
+  const P=PASS[readU];
+  return `<button class="back" data-a="home">‹ 回家</button>
+    <div class="chips">
+      <div class="chip ${readU==8?'on':''}" data-a="readu" data-u="8">Unit 8</div>
+      <div class="chip ${readU==9?'on':''}" data-a="readu" data-u="9">Unit 9</div>
+    </div>
+    <div class="panel">
+      <div class="ptitle en">${esc(P.title)}</div>
+      <div class="soft-sub">${esc(P.zh)}</div>
+      <div class="legend"><span><span class="lg wd">粉色</span> 點看單字</span><span><span class="lg ph">藍色</span> 點看片語</span></div>
+    </div>
+    ${P.paras.map((p,i)=>`<div class="panel">
+      <div class="para">${tokHTML(p.en)}</div>
+      <div class="pact"><button class="btn aqua sm" data-a="readpara" data-i="${i}">🔊 朗讀</button>
+        <button class="btn ghost sm" data-a="zhp" data-i="${i}">看中文 🌸</button></div>
+      <div class="zhp" id="zhp${i}">${esc(p.zh)}</div>
+    </div>`).join('')}
+    <button class="btn rose wide" data-a="readdone">讀完了 💗</button>`;
+}
+function openTerm(id){
+  const isP=id.startsWith('p_'), w=isP?PH[id]:WD[id];
+  if(!w)return;
+  const term=w.say||w.en, exs=isP?w.exs:[[w.ex,w.exzh]];
+  $('#sheet').innerHTML=`<div class="handle"></div>
+    <div class="rowtop"><div><div class="sh-en en">${esc(w.en)}</div><span class="pos">${esc(w.pos)}</span></div>
+      <button class="spk" data-a="say" data-t="${esc(term)}" data-r="0.9" aria-label="唸這個字">🔊</button></div>
+    <div class="sh-zh">${esc(w.zh)}</div>
+    ${w.tip?`<div class="sh-tip">🧩 ${esc(w.tip)}</div>`:''}
+    <div style="margin-top:12px">${exs.map(e=>`<div class="ex" style="text-align:left;margin-bottom:10px">${exHTML(e[0])} <button class="spk mini" data-a="say" data-t="${esc(plain(e[0]))}" data-r="0.85" aria-label="唸例句">🔊</button><div class="z">${esc(e[1])}</div></div>`).join('')}</div>`;
+  $('#sheet').classList.add('on');$('#backdrop').classList.add('on');
+  say(term,.9);
+}
+function closeSheet(){$('#sheet').classList.remove('on');$('#backdrop').classList.remove('on')}
+
 /* ---- events ---- */
 const A={
-  home:()=>{screen='home';render()},
-  go:d=>{screen=d.s;if(d.s==='quiz'){buildQuiz()}if(d.s==='cards'){deck={i:0,flip:false}}render();
+  home:()=>{closeSheet();screen='home';render()},
+  go:d=>{closeSheet();screen=d.s;if(d.s==='quiz'){buildQuiz()}if(d.s==='cards'){deck={i:0,flip:false}}render();
     if(d.s==='cards')say(scoped()[0].en,.9);if(d.s==='quiz')setTimeout(()=>say(quiz.words[0].en,.9),300)},
-  scope:d=>{scope=d.u==='all'?'all':+d.u;deck={i:0,flip:false};render();say(scoped()[0].en,.9)},
+  scope:d=>{closeSheet();scope=d.u==='all'?'all':+d.u;deck={i:0,flip:false};render();say(scoped()[0].en,.9)},
   flip:()=>{deck.flip=!deck.flip;const f=$('.flip');if(f)f.classList.toggle('on',deck.flip);if(deck.flip){SFX.pop();const w=scoped()[deck.i]}},
   nav:d=>{const L=scoped();deck.i=(deck.i+ +d.d + L.length)%L.length;deck.flip=false;render();say(scoped()[deck.i].en,.9)},
   say:d=>say(d.t,+d.r||.9),
   know:(d,el)=>{const en=d.en;if(S.known[en]){toast('這個字已經記住囉 💗')}else{S.known[en]=1;save();head();heartsFromEl(el,7);SFX.yay();toast('收進小愛心 💗')}render();},
   pick:d=>pickOpt(+d.i),
   qnext:qNext,
+  readu:d=>{readU=+d.u;closeSheet();render()},
+  readpara:d=>say(stripTok(PASS[readU].paras[+d.i].en),.85),
+  zhp:(d,el)=>{const z=$('#zhp'+d.i);const on=z.classList.toggle('show');el.textContent=on?'收起中文 🌸':'看中文 🌸'},
+  readdone:(d,el)=>{heartsFromEl(el,8);SFX.yay();toast('讀完課文了，好棒 💗')},
+  term:d=>openTerm(d.id),
+  closesheet:closeSheet,
   sound:()=>{S.sound=!S.sound;save();render();if(S.sound)SFX.pop()}
 };
 document.addEventListener('click',e=>{
